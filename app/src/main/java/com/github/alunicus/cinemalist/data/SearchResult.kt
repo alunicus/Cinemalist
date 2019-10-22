@@ -1,6 +1,6 @@
 package com.github.alunicus.cinemalist.data
 
-data class SearchResultResponse(
+data class SearchResult(
     val page: Int,
     val totalPages: Int,
     val totalResults: Int,
