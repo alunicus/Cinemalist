@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.github.alunicus.cinemalist.R
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
     companion object {
         fun newInstance() = MovieFragment()
     }
 
-    private lateinit var viewModel: MovieViewModel
+    private val viewModel: MovieViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.movie_fragment, container, false)
@@ -21,7 +21,5 @@ class MovieFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 }
