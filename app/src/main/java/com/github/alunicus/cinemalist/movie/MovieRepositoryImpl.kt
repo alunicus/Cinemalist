@@ -1,5 +1,6 @@
 package com.github.alunicus.cinemalist.movie
 
+import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.data.Movie
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
@@ -23,6 +24,6 @@ class MovieRepositoryImpl : MovieRepository {
     }
 
     override suspend fun getMovieById(id: Int): Movie {
-        return api.getMovieById(id, "")
+        return api.getMovieById(id, BuildConfig.API_KEY)
     }
 }
