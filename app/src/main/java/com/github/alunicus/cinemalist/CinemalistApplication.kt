@@ -18,5 +18,6 @@ class CinemalistApplication : Application() {
 }
 
 val modules = module {
-    single<MovieRepository> { MovieRepositoryImpl() }
+    single { Network() }
+    single<MovieRepository> { MovieRepositoryImpl(get()) }
 }
