@@ -3,33 +3,26 @@ package com.github.alunicus.cinemalist
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
+import com.github.alunicus.cinemalist.movie.MovieRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val gson = GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-
-        val service = retrofit.create(SearchApi::class.java)
+        val movieRepository: MovieRepository by inject()
 
         GlobalScope.launch {
-            service.getSearchResult("Rocky", "")
-                .results.forEach { Log.d("TAG", it.title) }
+            try {
+                movieRepository.getMovieById(299536).apply {
+                    Log.d("TAG", "ID: $id and Title: $title")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }
