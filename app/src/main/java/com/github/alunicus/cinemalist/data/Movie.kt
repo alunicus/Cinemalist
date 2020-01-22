@@ -15,7 +15,6 @@ data class Movie(
     val revenue: Int,
     val runtime: Int,
     val status: String,
-    val tagline: String,
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Int
