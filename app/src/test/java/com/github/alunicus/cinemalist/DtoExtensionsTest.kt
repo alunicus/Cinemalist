@@ -8,7 +8,8 @@ import com.github.alunicus.cinemalist.extensions.toSearchMovie
 import com.github.alunicus.cinemalist.extensions.toSearchMovies
 import com.github.alunicus.cinemalist.extensions.toSearchResult
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 
 class DtoExtensionsTest {
     private val searchMovieDtoList = listOf(
@@ -32,83 +33,89 @@ class DtoExtensionsTest {
         SearchMovie(3, "Title3", "Overview3", "pP3", 3.33, 3.33, 3)
     )
 
-    @Test
-    fun `should return SearchResult from SearchResultDto`() {
-        val searchResultsDto = SearchResultsDto(1, 1, 3, searchMovieDtoList)
+    @Nested
+    inner class SearchResult {
+        @Test
+        fun `should return SearchResult from SearchResultDto`() {
+            val searchResultsDto = SearchResultsDto(1, 1, 3, searchMovieDtoList)
 
-        val expectedSearchResult = SearchResult(3, expectedSearchMovieList)
+            val expectedSearchResult = SearchResult(3, expectedSearchMovieList)
 
-        assertThat(searchResultsDto.toSearchResult()).isEqualTo(expectedSearchResult)
+            assertThat(searchResultsDto.toSearchResult()).isEqualTo(expectedSearchResult)
+        }
     }
 
-    @Test
-    fun `should return list of SearchMovies from a list of SearchMovieDto`() {
-        assertThat(searchMovieDtoList.toSearchMovies())
-            .hasSize(3)
-            .isEqualTo(expectedSearchMovieList)
-    }
+    @Nested
+    inner class SearchMovie {
+        @Test
+        fun `should return list of SearchMovies from a list of SearchMovieDto`() {
+            assertThat(searchMovieDtoList.toSearchMovies())
+                .hasSize(3)
+                .isEqualTo(expectedSearchMovieList)
+        }
 
-    @Test
-    fun `should return SearchMovie converted from SearchMovieDto without null fields`() {
-        val searchMovieDto = SearchMovieDto(
-            false,
-            "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
-            listOf(878, 28, 12),
-            24428,
-            "en",
-            "The Avengers",
-            "When an unexpected enemy emerges and threatens global safety and security...",
-            7.353212,
-            "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-            "2012-04-25",
-            "The Avengers",
-            false,
-            7.33,
-            8503
-        )
+        @Test
+        fun `should return SearchMovie converted from SearchMovieDto without null fields`() {
+            val searchMovieDto = SearchMovieDto(
+                false,
+                "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
+                listOf(878, 28, 12),
+                24428,
+                "en",
+                "The Avengers",
+                "When an unexpected enemy emerges and threatens global safety and security...",
+                7.353212,
+                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+                "2012-04-25",
+                "The Avengers",
+                false,
+                7.33,
+                8503
+            )
 
-        val expectedSearchMovie = SearchMovie(
-            24428,
-            "The Avengers",
-            "When an unexpected enemy emerges and threatens global safety and security...",
-            "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-            7.353212,
-            7.33,
-            8503
-        )
+            val expectedSearchMovie = SearchMovie(
+                24428,
+                "The Avengers",
+                "When an unexpected enemy emerges and threatens global safety and security...",
+                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+                7.353212,
+                7.33,
+                8503
+            )
 
-        assertThat(searchMovieDto.toSearchMovie()).isEqualTo(expectedSearchMovie)
-    }
+            assertThat(searchMovieDto.toSearchMovie()).isEqualTo(expectedSearchMovie)
+        }
 
-    @Test
-    fun `should return SearchMovie converted from SearchMovieDto with all possible null fields`() {
-        val searchMovieDto = SearchMovieDto(
-            false,
-            null,
-            listOf(878, 28, 12),
-            24428,
-            "en",
-            "The Avengers",
-            "When an unexpected enemy emerges and threatens global safety and security...",
-            7.353212,
-            null,
-            "2012-04-25",
-            "The Avengers",
-            false,
-            7.33,
-            8503
-        )
+        @Test
+        fun `should return SearchMovie converted from SearchMovieDto with all possible null fields`() {
+            val searchMovieDto = SearchMovieDto(
+                false,
+                null,
+                listOf(878, 28, 12),
+                24428,
+                "en",
+                "The Avengers",
+                "When an unexpected enemy emerges and threatens global safety and security...",
+                7.353212,
+                null,
+                "2012-04-25",
+                "The Avengers",
+                false,
+                7.33,
+                8503
+            )
 
-        val expectedSearchMovie = SearchMovie(
-            24428,
-            "The Avengers",
-            "When an unexpected enemy emerges and threatens global safety and security...",
-            "",
-            7.353212,
-            7.33,
-            8503
-        )
+            val expectedSearchMovie = SearchMovie(
+                24428,
+                "The Avengers",
+                "When an unexpected enemy emerges and threatens global safety and security...",
+                "",
+                7.353212,
+                7.33,
+                8503
+            )
 
-        assertThat(searchMovieDto.toSearchMovie()).isEqualTo(expectedSearchMovie)
+            assertThat(searchMovieDto.toSearchMovie()).isEqualTo(expectedSearchMovie)
+        }
     }
 }
