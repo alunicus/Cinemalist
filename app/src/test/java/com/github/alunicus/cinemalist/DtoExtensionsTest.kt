@@ -34,7 +34,7 @@ class DtoExtensionsTest {
     )
 
     @Nested
-    inner class SearchResult {
+    inner class SearchResultTests {
         @Test
         fun `should return SearchResult from SearchResultDto`() {
             val searchResultsDto = SearchResultsDto(1, 1, 3, searchMovieDtoList)
@@ -46,7 +46,7 @@ class DtoExtensionsTest {
     }
 
     @Nested
-    inner class SearchMovie {
+    inner class SearchMovieTests {
         @Test
         fun `should return list of SearchMovies from a list of SearchMovieDto`() {
             assertThat(searchMovieDtoList.toSearchMovies())
@@ -56,48 +56,34 @@ class DtoExtensionsTest {
 
         @Test
         fun `should return SearchMovie converted from SearchMovieDto without null fields`() {
-            val searchMovieDto = SearchMovieDto(
-                false,
+            val searchMovieDto = getSearchMovieDto(
                 "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
-                listOf(878, 28, 12),
-                24428,
-                "en",
-                "The Avengers",
-                "When an unexpected enemy emerges and threatens global safety and security...",
-                7.353212,
-                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-                "2012-04-25",
-                "The Avengers",
-                false,
-                7.33,
-                8503
+                "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg"
             )
 
-            val expectedSearchMovie = SearchMovie(
-                24428,
-                "The Avengers",
-                "When an unexpected enemy emerges and threatens global safety and security...",
-                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-                7.353212,
-                7.33,
-                8503
-            )
+            val expectedSearchMovie = getExpectedSearchMovie("/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg")
 
             assertThat(searchMovieDto.toSearchMovie()).isEqualTo(expectedSearchMovie)
         }
 
         @Test
         fun `should return SearchMovie converted from SearchMovieDto with all possible null fields`() {
-            val searchMovieDto = SearchMovieDto(
+            val searchMovieDto = getSearchMovieDto(null, null)
+
+            assertThat(searchMovieDto.toSearchMovie()).isEqualTo(getExpectedSearchMovie(""))
+        }
+
+        private fun getSearchMovieDto(backdropPath: String?, posterPath: String?): SearchMovieDto =
+            SearchMovieDto(
                 false,
-                null,
+                backdropPath,
                 listOf(878, 28, 12),
                 24428,
                 "en",
                 "The Avengers",
                 "When an unexpected enemy emerges and threatens global safety and security...",
                 7.353212,
-                null,
+                posterPath,
                 "2012-04-25",
                 "The Avengers",
                 false,
@@ -105,17 +91,14 @@ class DtoExtensionsTest {
                 8503
             )
 
-            val expectedSearchMovie = SearchMovie(
-                24428,
-                "The Avengers",
-                "When an unexpected enemy emerges and threatens global safety and security...",
-                "",
-                7.353212,
-                7.33,
-                8503
-            )
-
-            assertThat(searchMovieDto.toSearchMovie()).isEqualTo(expectedSearchMovie)
-        }
+        private fun getExpectedSearchMovie(posterPath : String): SearchMovie = SearchMovie(
+            24428,
+            "The Avengers",
+            "When an unexpected enemy emerges and threatens global safety and security...",
+            posterPath,
+            7.353212,
+            7.33,
+            8503
+        )
     }
 }
