@@ -11,7 +11,7 @@ fun MovieDto.toMovie(): Movie = Movie(
     id,
     title,
     originalTitle,
-    originalTitle,
+    originalLanguage,
     popularity,
     adult,
     budget,

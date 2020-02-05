@@ -1,9 +1,12 @@
 package com.github.alunicus.cinemalist
 
+import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.data.SearchMovie
 import com.github.alunicus.cinemalist.data.SearchResult
+import com.github.alunicus.cinemalist.data.dto.BelongsToCollectionDto
 import com.github.alunicus.cinemalist.data.dto.SearchMovieDto
 import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
+import com.github.alunicus.cinemalist.extensions.toMovie
 import com.github.alunicus.cinemalist.extensions.toSearchMovie
 import com.github.alunicus.cinemalist.extensions.toSearchMovies
 import com.github.alunicus.cinemalist.extensions.toSearchResult
@@ -34,6 +37,77 @@ class DtoExtensionsTest {
     )
 
     @Nested
+    inner class MovieTests {
+        @Test
+        fun `should return Movie from movieDto without null fields`() {
+            val movieDto = getMovieDto(
+                "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
+                BelongsToCollectionDto(
+                    86311,
+                    "The Avengers Collection",
+                    "/yFSIUVTCvgYrpalUktulvk3Gi5Y.jpg",
+                    "/zuW6fOiusv4X9nnW3paHGfXcSll.jpg"
+                ),
+                "http://marvel.com/avengers_movie/",
+                "tt0848228",
+                "When an unexpected enemy emerges and threatens global safety and security...",
+                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+                143,
+                "Some assembly required."
+            )
+
+            val expectedMovie = Movie(
+                24428,
+                "The Avengers",
+                "The Avengers",
+                "en",
+                33.346,
+                false,
+                24428,
+                "http://marvel.com/avengers_movie/",
+                "When an unexpected enemy emerges and threatens global safety and security...",
+                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+                "2012-04-25",
+                1519557910,
+                143,
+                "Released",
+                false,
+                7.7,
+                21427
+            )
+
+            assertThat(movieDto.toMovie()).isEqualTo(expectedMovie)
+        }
+
+        @Test
+        fun `should return Movie from movieDto with all possible null fields`() {
+            val movieDto = getMovieDto()
+
+            val expectedMovie = Movie(
+                24428,
+                "The Avengers",
+                "The Avengers",
+                "en",
+                33.346,
+                false,
+                24428,
+                "",
+                "",
+                "",
+                "2012-04-25",
+                1519557910,
+                0,
+                "Released",
+                false,
+                7.7,
+                21427
+            )
+
+            assertThat(movieDto.toMovie()).isEqualTo(expectedMovie)
+        }
+    }
+
+    @Nested
     inner class SearchResultTests {
         @Test
         fun `should return SearchResult from SearchResultDto`() {
@@ -51,7 +125,7 @@ class DtoExtensionsTest {
         fun `should return list of SearchMovies from a list of SearchMovieDto`() {
             assertThat(searchMovieDtoList.toSearchMovies())
                 .hasSize(3)
-                .isEqualTo(expectedSearchMovieList)
+                .containsExactlyElementsOf(expectedSearchMovieList)
         }
 
         @Test
@@ -91,7 +165,7 @@ class DtoExtensionsTest {
                 8503
             )
 
-        private fun getExpectedSearchMovie(posterPath : String): SearchMovie = SearchMovie(
+        private fun getExpectedSearchMovie(posterPath: String): SearchMovie = SearchMovie(
             24428,
             "The Avengers",
             "When an unexpected enemy emerges and threatens global safety and security...",

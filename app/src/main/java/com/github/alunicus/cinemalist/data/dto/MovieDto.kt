@@ -5,7 +5,7 @@ data class MovieDto(
     val backdropPath: String?,
     val belongsToCollection: BelongsToCollectionDto?,
     val budget: Int,
-    val genres: List<Genre>,
+    val genres: List<GenreDto>,
     val homepage: String?,
     val id: Int,
     val imdbId: String?,
