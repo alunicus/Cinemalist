@@ -1,18 +1,17 @@
-package com.github.alunicus.cinemalist
+package com.github.alunicus.cinemalist.extensions
 
+import com.github.alunicus.cinemalist.ResourceLoader
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.data.SearchMovie
 import com.github.alunicus.cinemalist.data.SearchResult
 import com.github.alunicus.cinemalist.data.dto.MovieDto
 import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
-import com.github.alunicus.cinemalist.extensions.toMovie
-import com.github.alunicus.cinemalist.extensions.toSearchResult
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class DtoExtensionsTest {
-    private val resourceLoader = ResourceLoader()
+    private val resourceLoader = ResourceLoader("./extensions/dto/")
 
     @Nested
     inner class MovieTests {
@@ -70,12 +69,37 @@ class DtoExtensionsTest {
         @Test
         fun `should return SearchResult from SearchResultDto`() {
             val expectedSearchMovieList = listOf(
-                SearchMovie(24428, "The Avengers", "When an unexpected enemy...", "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg", 37.707, 7.7, 21428),
-                SearchMovie(299536, "Avengers: Infinity War", "As the Avengers and...", "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",  65.374, 8.3, 16635),
-                SearchMovie(299534, "Avengers: Endgame", "After the devastating...", "/or06FN3Dka5tukK1e9sl16pB3iy.jpg", 38.78, 8.3, 11108)
+                SearchMovie(
+                    24428,
+                    "The Avengers",
+                    "When an unexpected enemy...",
+                    "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+                    37.707,
+                    7.7,
+                    21428
+                ),
+                SearchMovie(
+                    299536,
+                    "Avengers: Infinity War",
+                    "As the Avengers and...",
+                    "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+                    65.374,
+                    8.3,
+                    16635
+                ),
+                SearchMovie(
+                    299534,
+                    "Avengers: Endgame",
+                    "After the devastating...",
+                    "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+                    38.78,
+                    8.3,
+                    11108
+                )
             )
 
-            val searchResultsDto = resourceLoader.readFromJson<SearchResultsDto>("search_movie_result_dto.json")
+            val searchResultsDto =
+                resourceLoader.readFromJson<SearchResultsDto>("search_movie_result_dto.json")
 
             val expectedSearchResult = SearchResult(3, expectedSearchMovieList)
 
@@ -85,12 +109,37 @@ class DtoExtensionsTest {
         @Test
         fun `should correctly handle all possible nulls during the mapping`() {
             val expectedSearchMovieList = listOf(
-                SearchMovie(24428, "The Avengers", "When an unexpected enemy...", "", 37.707, 7.7, 21428),
-                SearchMovie(299536, "Avengers: Infinity War", "As the Avengers and...", "",  65.374, 8.3, 16635),
-                SearchMovie(299534, "Avengers: Endgame", "After the devastating...", "", 38.78, 8.3, 11108)
+                SearchMovie(
+                    24428,
+                    "The Avengers",
+                    "When an unexpected enemy...",
+                    "",
+                    37.707,
+                    7.7,
+                    21428
+                ),
+                SearchMovie(
+                    299536,
+                    "Avengers: Infinity War",
+                    "As the Avengers and...",
+                    "",
+                    65.374,
+                    8.3,
+                    16635
+                ),
+                SearchMovie(
+                    299534,
+                    "Avengers: Endgame",
+                    "After the devastating...",
+                    "",
+                    38.78,
+                    8.3,
+                    11108
+                )
             )
 
-            val searchResultsDto = resourceLoader.readFromJson<SearchResultsDto>("search_movie_result_dto_with_nulls.json")
+            val searchResultsDto =
+                resourceLoader.readFromJson<SearchResultsDto>("search_movie_result_dto_with_nulls.json")
 
             val expectedSearchResult = SearchResult(3, expectedSearchMovieList)
 
