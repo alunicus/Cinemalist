@@ -3,7 +3,7 @@ package com.github.alunicus.cinemalist
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.data.SearchMovie
 import com.github.alunicus.cinemalist.data.SearchResult
-import com.github.alunicus.cinemalist.data.dto.BelongsToCollectionDto
+import com.github.alunicus.cinemalist.data.dto.MovieDto
 import com.github.alunicus.cinemalist.data.dto.SearchMovieDto
 import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
 import com.github.alunicus.cinemalist.extensions.toMovie
@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class DtoExtensionsTest {
+    private val resourceLoader = ResourceLoader()
+
     private val searchMovieDtoList = listOf(
         SearchMovieDto(
             false, "bdp1", listOf(1), 1, "en", "OrigTitle1",
@@ -40,22 +42,6 @@ class DtoExtensionsTest {
     inner class MovieTests {
         @Test
         fun `should return Movie from movieDto without null fields`() {
-            val movieDto = getMovieDto(
-                "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
-                BelongsToCollectionDto(
-                    86311,
-                    "The Avengers Collection",
-                    "/yFSIUVTCvgYrpalUktulvk3Gi5Y.jpg",
-                    "/zuW6fOiusv4X9nnW3paHGfXcSll.jpg"
-                ),
-                "http://marvel.com/avengers_movie/",
-                "tt0848228",
-                "When an unexpected enemy emerges and threatens global safety and security...",
-                "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
-                143,
-                "Some assembly required."
-            )
-
             val expectedMovie = getExpectedMovie(
                 "http://marvel.com/avengers_movie/",
                 "When an unexpected enemy emerges and threatens global safety and security...",
@@ -63,12 +49,14 @@ class DtoExtensionsTest {
                 143
             )
 
-            assertThat(movieDto.toMovie()).isEqualTo(expectedMovie)
+            val actualResult = resourceLoader.readFromJson<MovieDto>("movie_dto.json").toMovie()
+
+            assertThat(actualResult).isEqualTo(expectedMovie)
         }
 
         @Test
         fun `should return Movie from movieDto with all possible null fields`() {
-            val movieDto = getMovieDto()
+            val movieDto = resourceLoader.readFromJson<MovieDto>("movie_dto_with_nulls.json")
 
             assertThat(movieDto.toMovie()).isEqualTo(getExpectedMovie())
         }
@@ -86,7 +74,7 @@ class DtoExtensionsTest {
                 "en",
                 33.346,
                 false,
-                24428,
+                220000000,
                 homepage,
                 overview,
                 posterPath,

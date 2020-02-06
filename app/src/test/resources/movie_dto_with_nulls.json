@@ -1,0 +1,49 @@
+{
+  "adult": false,
+  "backdrop_path": null,
+  "belongs_to_collection": null,
+  "budget": 220000000,
+  "genres": [
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    }
+  ],
+  "homepage": null,
+  "id": 24428,
+  "imdb_id": null,
+  "original_language": "en",
+  "original_title": "The Avengers",
+  "overview": null,
+  "popularity": 33.346,
+  "poster_path": null,
+  "production_companies": [
+    {
+      "id": 420,
+      "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+      "name": "Marvel Studios",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2012-04-25",
+  "revenue": 1519557910,
+  "runtime": null,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": null,
+  "title": "The Avengers",
+  "video": false,
+  "vote_average": 7.7,
+  "vote_count": 21427
+}
