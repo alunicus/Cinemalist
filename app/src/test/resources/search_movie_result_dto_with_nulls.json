@@ -1,0 +1,67 @@
+{
+  "page": 1,
+  "total_results": 3,
+  "total_pages": 1,
+  "results": [
+    {
+      "popularity": 37.707,
+      "vote_count": 21428,
+      "video": false,
+      "poster_path": null,
+      "id": 24428,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "en",
+      "original_title": "The Avengers",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "title": "The Avengers",
+      "vote_average": 7.7,
+      "overview": "When an unexpected enemy...",
+      "release_date": "2012-04-25"
+    },
+    {
+      "popularity": 65.374,
+      "vote_count": 16635,
+      "video": false,
+      "poster_path": null,
+      "id": 299536,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "en",
+      "original_title": "Avengers: Infinity War",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "title": "Avengers: Infinity War",
+      "vote_average": 8.3,
+      "overview": "As the Avengers and...",
+      "release_date": "2018-04-25"
+    },
+    {
+      "popularity": 38.78,
+      "vote_count": 11108,
+      "video": false,
+      "poster_path": null,
+      "id": 299534,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "en",
+      "original_title": "Avengers: Endgame",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "title": "Avengers: Endgame",
+      "vote_average": 8.3,
+      "overview": "After the devastating...",
+      "release_date": "2019-04-24"
+    }
+  ]
+}
