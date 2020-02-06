@@ -32,9 +32,9 @@ fun SearchResultsDto.toSearchResult() = SearchResult(
     results.toSearchMovies()
 )
 
-fun List<SearchMovieDto>.toSearchMovies() = asSequence().map { it.toSearchMovie() }.toList()
+private fun List<SearchMovieDto>.toSearchMovies() = asSequence().map { it.toSearchMovie() }.toList()
 
-fun SearchMovieDto.toSearchMovie() = SearchMovie(
+private fun SearchMovieDto.toSearchMovie() = SearchMovie(
     id,
     title,
     overview,
