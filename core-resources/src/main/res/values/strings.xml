@@ -4,4 +4,9 @@
     <string name="network_connection_error">There is no internet connection. Please, check your settings.</string>
     <string name="server_error">Something is wrong on our side. Please, try again later.</string>
     <string name="generic_error">Something went wrong. Please, try again later.</string>
+
+    <string name="bottom_navigation_home">Home</string>
+    <string name="bottom_navigation_search">Search</string>
+    <string name="bottom_navigation_profile">Profile</string>
+    <string name="bottom_navigation_menu">Menu</string>
 </resources>

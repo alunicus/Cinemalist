@@ -17,4 +17,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/movie_fragment" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_navigation_height"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/colorBottomNavIcon"
+        app:itemTextColor="@color/colorBottomNavIcon"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
