@@ -11,14 +11,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.05"
+        tools:viewBindingIgnore="true" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/movie_end_guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.95"
+        tools:viewBindingIgnore="true" />
 
     <ImageView
         android:id="@+id/movie_poster"
@@ -76,7 +78,8 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_duration" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_duration"
+        tools:viewBindingIgnore="true" />
 
     <View
         android:id="@+id/movie_overview_divider"
@@ -87,7 +90,8 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_overview_label" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_overview_label"
+        tools:viewBindingIgnore="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_cast_list"
@@ -110,7 +114,8 @@
         android:text="@string/movie_overview_text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_cast_list" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_cast_list"
+        tools:viewBindingIgnore="true" />
 
     <TextView
         android:id="@+id/movie_overview"
