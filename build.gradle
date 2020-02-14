@@ -11,6 +11,8 @@ buildscript {
     ext.koin_version = '2.0.1'
     ext.lifecycle_version = '2.2.0'
     ext.legacy_support_version = '1.0.0'
+    ext.coil_version = '0.9.5'
+
     ext.junit_version = '5.6.0'
     ext.assertj_version = '3.14.0'
     ext.mockk_version = '1.9.3'
@@ -23,7 +25,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0-rc02'
+        classpath 'com.android.tools.build:gradle:3.6.0-rc03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
