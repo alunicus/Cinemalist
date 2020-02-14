@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -32,9 +32,9 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.onMovieLoaded().observe(viewLifecycleOwner, Observer {
+        viewModel.onMovieLoaded().observe(viewLifecycleOwner) {
             populateView(it)
-        })
+        }
 
         viewModel.loadMovie(458156)
     }
