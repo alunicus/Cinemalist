@@ -57,7 +57,7 @@
         android:layout_marginStart="5dp"
         android:alpha="0.6"
         android:textColor="@color/colorTextPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/movie_title"
+        app:layout_constraintBaseline_toBaselineOf="@id/movie_title"
         app:layout_constraintEnd_toEndOf="@+id/movie_end_guide"
         app:layout_constraintStart_toEndOf="@+id/movie_title"
         tools:text="(2019)" />

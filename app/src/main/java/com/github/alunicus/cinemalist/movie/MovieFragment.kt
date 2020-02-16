@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import coil.api.load
+import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
@@ -45,7 +46,8 @@ class MovieFragment : Fragment() {
         binding.apply {
             moviePoster.load("https://image.tmdb.org/t/p/original/${movie.posterPath}")
             movieTitle.text = movie.title
-            movieYear.text = movie.releaseDate.asYear().toString()
+            movieYear.text =
+                getString(R.string.movie_release_year, movie.releaseDate.asYear().toString())
             movieDuration.text = movie.runtime.toString()
             movieOverview.text = movie.overview
         }

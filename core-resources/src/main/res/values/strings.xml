@@ -9,5 +9,7 @@
     <string name="bottom_navigation_search">Search</string>
     <string name="bottom_navigation_profile">Profile</string>
     <string name="bottom_navigation_menu">Menu</string>
+
     <string name="movie_overview_text">Overview</string>
+    <string name="movie_release_year">(%s)</string>
 </resources>
