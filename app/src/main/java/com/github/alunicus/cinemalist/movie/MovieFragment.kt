@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.github.alunicus.cinemalist.R
+import com.github.alunicus.cinemalist.data.Duration
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
 import com.github.alunicus.cinemalist.extensions.loadPoster
+import com.github.alunicus.cinemalist.extensions.toDuration
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
@@ -48,9 +50,17 @@ class MovieFragment : Fragment() {
             movieTitle.text = movie.title
             movieYear.text =
                 getString(R.string.movie_release_year, movie.releaseDate.asYear().toString())
-            movieDuration.text = movie.runtime.toString()
             movieOverview.text = movie.overview
+            movieDuration.text = getDuration(movie.runtime.toDuration())
         }
+    }
+
+    private fun getDuration(duration: Duration): String {
+        return getString(
+            R.string.movie_duration,
+            duration.hours.toString(),
+            duration.minutes.toString()
+        )
     }
 
     override fun onDestroyView() {
