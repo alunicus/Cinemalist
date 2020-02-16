@@ -9,11 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.alunicus.cinemalist.R
 
 class SearchFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
-
     private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(

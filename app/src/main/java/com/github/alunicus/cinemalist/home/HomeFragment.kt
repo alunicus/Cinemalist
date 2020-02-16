@@ -9,11 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.alunicus.cinemalist.R
 
 class HomeFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
     private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(

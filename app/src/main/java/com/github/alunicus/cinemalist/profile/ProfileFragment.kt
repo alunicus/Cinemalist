@@ -9,11 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.alunicus.cinemalist.R
 
 class ProfileFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
-
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreateView(

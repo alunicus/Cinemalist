@@ -9,11 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.alunicus.cinemalist.R
 
 class MenuFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MenuFragment()
-    }
-
     private lateinit var viewModel: MenuViewModel
 
     override fun onCreateView(

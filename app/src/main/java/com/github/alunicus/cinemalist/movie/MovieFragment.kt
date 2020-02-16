@@ -16,10 +16,6 @@ import com.github.alunicus.cinemalist.extensions.toDuration
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
-    companion object {
-        fun newInstance() = MovieFragment()
-    }
-
     private var _binding: MovieFragmentBinding? = null
     private val binding get() = _binding!!
 
