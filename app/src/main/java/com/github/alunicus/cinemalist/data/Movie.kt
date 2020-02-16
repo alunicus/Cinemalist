@@ -1,5 +1,7 @@
 package com.github.alunicus.cinemalist.data
 
+import java.util.*
+
 data class Movie(
     val id: Int,
     val title: String,
@@ -11,7 +13,7 @@ data class Movie(
     val homepage: String,
     val overview: String,
     val posterPath: String,
-    val releaseDate: String,
+    val releaseDate: Date,
     val revenue: Int,
     val runtime: Int,
     val status: String,

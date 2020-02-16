@@ -7,7 +7,7 @@ import java.util.*
 class DateExtensionTest {
     @Test
     fun `should return year as Int from the Date`() {
-        val date = Date(1580666402000) // 2020-02-02:20:00:02
+        val date = Date(1580666402000) // 2020-02-02 20:00:02
 
         assertThat(date.asYear()).isEqualTo(2020)
     }

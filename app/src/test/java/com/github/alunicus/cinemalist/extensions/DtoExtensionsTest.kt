@@ -9,6 +9,7 @@ import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import java.util.*
 
 class DtoExtensionsTest {
     private val resourceLoader = ResourceLoader("./extensions/dto/")
@@ -53,7 +54,7 @@ class DtoExtensionsTest {
                 homepage,
                 overview,
                 posterPath,
-                "2012-04-25",
+                Date(1335301200000), //"2012-04-25 00:00:00",
                 1519557910,
                 runtime,
                 "Released",

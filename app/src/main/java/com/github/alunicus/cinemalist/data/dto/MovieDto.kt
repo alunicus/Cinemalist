@@ -1,5 +1,7 @@
 package com.github.alunicus.cinemalist.data.dto
 
+import java.util.*
+
 data class MovieDto(
     val adult: Boolean,
     val backdropPath: String?,
@@ -16,7 +18,7 @@ data class MovieDto(
     val posterPath: String?,
     val productionCompanies: List<ProductionCompanyDto>,
     val productionCountries: List<ProductionCountryDto>,
-    val releaseDate: String,
+    val releaseDate: Date,
     val revenue: Int,
     val runtime: Int?,
     val spokenLanguages: List<SpokenLanguageDto>,

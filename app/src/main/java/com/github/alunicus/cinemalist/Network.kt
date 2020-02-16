@@ -11,6 +11,7 @@ class Network {
     init {
         val gson = GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .setDateFormat("yyyy-MM-dd")
             .create()
 
         retrofit = Retrofit.Builder()

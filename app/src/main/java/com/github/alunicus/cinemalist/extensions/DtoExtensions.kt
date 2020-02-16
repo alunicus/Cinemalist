@@ -7,7 +7,7 @@ import com.github.alunicus.cinemalist.data.dto.MovieDto
 import com.github.alunicus.cinemalist.data.dto.SearchMovieDto
 import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
 
-fun MovieDto.toMovie(): Movie = Movie(
+fun MovieDto.toMovie() = Movie(
     id,
     title,
     originalTitle,
