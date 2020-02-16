@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
-import coil.api.load
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
+import com.github.alunicus.cinemalist.extensions.loadPoster
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
@@ -44,7 +44,7 @@ class MovieFragment : Fragment() {
 
     private fun populateView(movie: Movie) {
         binding.apply {
-            moviePoster.load("https://image.tmdb.org/t/p/original/${movie.posterPath}")
+            moviePoster.loadPoster(movie.posterPath)
             movieTitle.text = movie.title
             movieYear.text =
                 getString(R.string.movie_release_year, movie.releaseDate.asYear().toString())
