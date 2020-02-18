@@ -17,3 +17,17 @@ jobs:
         env:
           API_KEY: ${{ secrets.API_KEY }}
         run: ./gradlew build
+
+  test:
+
+    steps:
+      - run:
+          name: Run tests
+          command: ./gradlew testDebugUnitTest
+
+      - store_artifacts:
+          path: app/build/reports/tests/
+          destination: tests_reports/
+
+      - store_test_results:
+          path: app/build/test-results
