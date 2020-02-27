@@ -3,6 +3,32 @@ name: Android CI
 on: [push]
 
 jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v1
+        with:
+          name: Unit tests result
+          path: app/build/reports/tests/
+
   build:
     runs-on: ubuntu-latest
 
@@ -12,11 +38,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Unit tests
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-        run: ./gradlew testDebugUnitTest
-      - name: Build with Gradle
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Build Debug
         run: ./gradlew assembleDebug
