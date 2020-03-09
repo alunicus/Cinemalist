@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist
+package com.github.alunicus.cinemalist.feature.search
 
 import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.search
+package com.github.alunicus.cinemalist.feature.search
 
 import androidx.lifecycle.ViewModel
 

@@ -1,9 +1,9 @@
 package com.github.alunicus.cinemalist.extensions
 
 import androidx.annotation.IntegerRes
-import com.github.alunicus.cinemalist.Error
+import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.R
-import com.github.alunicus.cinemalist.Result
+import com.github.alunicus.cinemalist.core.Result
 
 @IntegerRes
 fun <T : Error> Result.Failure<T>.handleFailure() : Int {

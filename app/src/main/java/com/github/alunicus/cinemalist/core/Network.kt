@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist
+package com.github.alunicus.cinemalist.core
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder

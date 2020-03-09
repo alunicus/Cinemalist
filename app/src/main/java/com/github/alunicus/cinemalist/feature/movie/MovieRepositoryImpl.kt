@@ -1,7 +1,7 @@
-package com.github.alunicus.cinemalist.movie
+package com.github.alunicus.cinemalist.feature.movie
 
 import com.github.alunicus.cinemalist.BuildConfig
-import com.github.alunicus.cinemalist.Network
+import com.github.alunicus.cinemalist.core.Network
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.extensions.toMovie
 import kotlinx.coroutines.Dispatchers

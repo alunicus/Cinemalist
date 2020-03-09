@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.profile
+package com.github.alunicus.cinemalist.feature.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

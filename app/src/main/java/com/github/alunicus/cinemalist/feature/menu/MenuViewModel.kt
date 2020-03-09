@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.menu
+package com.github.alunicus.cinemalist.feature.menu
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.movie
+package com.github.alunicus.cinemalist.feature.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

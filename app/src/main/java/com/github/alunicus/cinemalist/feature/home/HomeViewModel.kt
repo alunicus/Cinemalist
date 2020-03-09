@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.home
+package com.github.alunicus.cinemalist.feature.home
 
 import androidx.lifecycle.ViewModel
 
