@@ -17,13 +17,16 @@ class CinemalistApplication : Application() {
 
         startKoin {
             androidContext(this@CinemalistApplication)
-            modules(modules)
+            modules(listOf(modules, movieModule))
         }
     }
 }
 
 val modules = module {
     single { Network() }
+}
+
+val movieModule = module {
     single<MovieRepository> { MovieRepositoryImpl(get()) }
 
     viewModel { MovieViewModel(get()) }
