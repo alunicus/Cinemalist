@@ -18,6 +18,7 @@ fun MovieDto.toMovie() = Movie(
     homepage ?: "",
     overview ?: "",
     posterPath ?: "",
+    backdropPath ?: "",
     releaseDate,
     revenue,
     runtime ?: 0,

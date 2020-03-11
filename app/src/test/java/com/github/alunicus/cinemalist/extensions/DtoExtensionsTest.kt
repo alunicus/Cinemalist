@@ -22,6 +22,7 @@ class DtoExtensionsTest {
                 "http://marvel.com/avengers_movie/",
                 "When an unexpected enemy emerges and threatens global safety and security...",
                 "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+                "/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg",
                 143
             )
 
@@ -41,6 +42,7 @@ class DtoExtensionsTest {
             homepage: String = "",
             overview: String = "",
             posterPath: String = "",
+            backdropPath: String = "",
             runtime: Int = 0
         ): Movie {
             return Movie(
@@ -54,6 +56,7 @@ class DtoExtensionsTest {
                 homepage,
                 overview,
                 posterPath,
+                backdropPath,
                 Date(1335301200000), //"2012-04-25 00:00:00",
                 1519557910,
                 runtime,
