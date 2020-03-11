@@ -39,23 +39,23 @@
         android:id="@+id/movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
         android:textColor="@color/colorTextPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@id/movie_poster"
-        tools:text="John Wick: Chapter 3 - Parabellum" />
+        tools:text="John Wick: Chapter 3 - Parabellum some thing more and more" />
 
     <TextView
         android:id="@+id/movie_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:alpha="0.6"
-        android:textColor="@color/colorTextPrimary"
+        android:textColor="@color/colorTextPrimaryLight"
         app:layout_constraintEnd_toStartOf="@id/movie_year_duration_separator"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
@@ -68,8 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:textColor="@color/colorSeparator"
         android:text="&#9679;"
+        android:textColor="@color/colorSeparator"
         app:layout_constraintEnd_toStartOf="@id/movie_duration"
         app:layout_constraintStart_toEndOf="@id/movie_year"
         app:layout_constraintTop_toTopOf="@id/movie_year"
@@ -85,37 +85,26 @@
         app:layout_constraintTop_toTopOf="@+id/movie_year"
         tools:text="2h 11m" />
 
-    <View
-        android:id="@+id/movie_cast_divider"
-        android:layout_width="0dp"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorSeparator"
-        app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
-        app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_duration"
-        tools:viewBindingIgnore="true" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_cast_list"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_cast_divider" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_year" />
 
     <TextView
         android:id="@+id/movie_overview_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/colorTextPrimaryLight"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/movie_overview_text"
+        android:textColor="@color/colorTextPrimaryLight"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@+id/movie_cast_list"
@@ -136,7 +125,7 @@
         android:id="@+id/movie_overview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="5"
         android:textColor="@color/colorTextPrimaryLight"
