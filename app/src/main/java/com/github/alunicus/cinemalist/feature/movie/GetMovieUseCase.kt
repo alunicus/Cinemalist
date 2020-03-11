@@ -6,8 +6,8 @@ import com.github.alunicus.cinemalist.data.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetMovieUseCase(private val movieRepository: MovieRepository, private val movieId: Int) {
-    suspend fun getMovie(): Result<Movie, Error> = withContext(Dispatchers.IO) {
+class GetMovieUseCase(private val movieRepository: MovieRepository) {
+    suspend fun getMovie(movieId: Int): Result<Movie, Error> = withContext(Dispatchers.IO) {
         movieRepository.getMovieById(movieId)
     }
 }

@@ -7,15 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.github.alunicus.cinemalist.core.Result
 import com.github.alunicus.cinemalist.data.Movie
 import kotlinx.coroutines.launch
+import org.koin.core.context.GlobalContext.get
 
-class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
+class MovieViewModel(private val movieUseCase: GetMovieUseCase) : ViewModel() {
     private val movieLoaded by lazy { MutableLiveData<Movie>() }
 
     fun onMovieLoaded(): LiveData<Movie> = movieLoaded
 
     fun loadMovie(movieId: Int) {
         viewModelScope.launch {
-            when (val result = GetMovieUseCase(repository, movieId).getMovie()) {
+            when (val result = movieUseCase.getMovie(movieId)) {
                 is Result.Success -> movieLoaded.value = result.result
                 is Result.Failure -> println("Error:")
             }

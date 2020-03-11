@@ -2,6 +2,7 @@ package com.github.alunicus.cinemalist
 
 import android.app.Application
 import com.github.alunicus.cinemalist.core.Network
+import com.github.alunicus.cinemalist.feature.movie.GetMovieUseCase
 import com.github.alunicus.cinemalist.feature.movie.MovieRepository
 import com.github.alunicus.cinemalist.feature.movie.MovieRepositoryImpl
 import com.github.alunicus.cinemalist.feature.movie.MovieViewModel
@@ -24,5 +25,8 @@ class CinemalistApplication : Application() {
 val modules = module {
     single { Network() }
     single<MovieRepository> { MovieRepositoryImpl(get()) }
+
     viewModel { MovieViewModel(get()) }
+
+    factory { GetMovieUseCase(get()) }
 }
