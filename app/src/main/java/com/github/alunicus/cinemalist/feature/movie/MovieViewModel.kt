@@ -15,7 +15,7 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
     fun loadMovie(movieId: Int) {
         viewModelScope.launch {
-            when (val result = GetMovieUseCase(repository, movieId).run()) {
+            when (val result = GetMovieUseCase(repository, movieId).getMovie()) {
                 is Result.Success -> movieLoaded.value = result.result
                 is Result.Failure -> println("Error:")
             }
