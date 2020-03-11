@@ -44,8 +44,7 @@ class MovieFragment : Fragment() {
         binding.apply {
             moviePoster.loadPoster(movie.posterPath)
             movieTitle.text = movie.title
-            movieYear.text =
-                getString(R.string.movie_release_year, movie.releaseDate.asYear().toString())
+            movieYear.text = movie.releaseDate.asYear().toString()
             movieOverview.text = movie.overview
             movieDuration.text = getDuration(movie.runtime.toDuration())
         }

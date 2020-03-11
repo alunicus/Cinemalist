@@ -8,5 +8,8 @@
     <color name="colorAccentLight">#6462ff</color>
 
     <color name="colorTextPrimary">#000000</color>
+    <color name="colorTextPrimaryLight">#737373</color>
     <color name="colorTextAccent">#ffffff</color>
+
+    <color name="colorSeparator">#afafaf</color>
 </resources>

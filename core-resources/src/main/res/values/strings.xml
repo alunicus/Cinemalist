@@ -11,6 +11,5 @@
     <string name="bottom_navigation_menu">Menu</string>
 
     <string name="movie_overview_text">Overview</string>
-    <string name="movie_release_year">(%s)</string>
     <string name="movie_duration">%1$sh %2$sm</string>
 </resources>

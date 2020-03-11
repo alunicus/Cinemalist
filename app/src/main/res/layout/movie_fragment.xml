@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.03"
+        app:layout_constraintGuide_begin="16dp"
         tools:viewBindingIgnore="true" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -19,13 +19,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.97"
+        app:layout_constraintGuide_end="16dp"
         tools:viewBindingIgnore="true" />
 
     <ImageView
         android:id="@+id/movie_poster"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="32dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
@@ -41,45 +42,55 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:textColor="@color/colorTextPrimary"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/movie_year"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@id/movie_poster"
-        tools:text="John Wick 3" />
+        tools:text="John Wick: Chapter 3 - Parabellum" />
 
     <TextView
         android:id="@+id/movie_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
         android:alpha="0.6"
         android:textColor="@color/colorTextPrimary"
-        app:layout_constraintBaseline_toBaselineOf="@id/movie_title"
-        app:layout_constraintEnd_toEndOf="@+id/movie_end_guide"
-        app:layout_constraintStart_toEndOf="@+id/movie_title"
-        tools:text="(2019)" />
+        app:layout_constraintEnd_toStartOf="@id/movie_year_duration_separator"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/movie_start_guide"
+        app:layout_constraintTop_toBottomOf="@id/movie_title"
+        tools:text="2019" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/movie_year_duration_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:textColor="@color/colorSeparator"
+        android:text="&#9679;"
+        app:layout_constraintEnd_toStartOf="@id/movie_duration"
+        app:layout_constraintStart_toEndOf="@id/movie_year"
+        app:layout_constraintTop_toTopOf="@id/movie_year"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/movie_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:alpha="0.6"
-        android:textColor="@color/colorTextPrimary"
-        app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_title"
+        android:textColor="@color/colorTextPrimaryLight"
+        app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
+        app:layout_constraintStart_toEndOf="@id/movie_year_duration_separator"
+        app:layout_constraintTop_toTopOf="@+id/movie_year"
         tools:text="2h 11m" />
 
     <View
         android:id="@+id/movie_cast_divider"
         android:layout_width="0dp"
         android:layout_height="0.7dp"
-        android:layout_marginTop="20dp"
-        android:background="?android:attr/listDivider"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorSeparator"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@+id/movie_duration"
@@ -103,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/colorTextPrimaryLight"
         android:text="@string/movie_overview_text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
@@ -113,8 +125,8 @@
         android:id="@+id/movie_overview_divider"
         android:layout_width="0dp"
         android:layout_height="0.7dp"
-        android:layout_marginTop="5dp"
-        android:background="?android:attr/listDivider"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorSeparator"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@+id/movie_overview_label"
@@ -127,6 +139,7 @@
         android:layout_marginTop="10dp"
         android:ellipsize="end"
         android:maxLines="5"
+        android:textColor="@color/colorTextPrimaryLight"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@+id/movie_overview_divider"
