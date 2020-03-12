@@ -17,7 +17,7 @@ fun ImageView.loadBlurredImage(context: Context?, url: String, radius: Float = 2
     context?.let {
         this.load("$BASE_IMAGE_URL$url") {
             crossfade(true)
-                .transformations(BlurTransformation(context, radius))
+            transformations(BlurTransformation(context, radius))
         }
     }
 }
