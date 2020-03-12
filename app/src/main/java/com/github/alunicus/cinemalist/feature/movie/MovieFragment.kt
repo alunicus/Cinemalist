@@ -11,7 +11,8 @@ import com.github.alunicus.cinemalist.data.Duration
 import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
-import com.github.alunicus.cinemalist.extensions.loadPoster
+import com.github.alunicus.cinemalist.extensions.loadBlurredImage
+import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.extensions.toDuration
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -42,7 +43,8 @@ class MovieFragment : Fragment() {
 
     private fun populateView(movie: Movie) {
         binding.apply {
-            moviePoster.loadPoster(movie.posterPath)
+            moviePoster.loadImage(movie.posterPath)
+            movieBackdrop.loadBlurredImage(context, movie.backdropPath)
             movieTitle.text = movie.title
             movieYear.text = movie.releaseDate.asYear().toString()
             movieOverview.text = movie.overview
