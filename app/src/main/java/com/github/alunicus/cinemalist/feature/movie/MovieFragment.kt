@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.github.alunicus.cinemalist.R
@@ -34,11 +35,25 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initToolbar()
+
         viewModel.onMovieLoaded().observe(viewLifecycleOwner) {
             populateView(it)
         }
 
         viewModel.loadMovie(458156)
+    }
+
+    private fun initToolbar() {
+        val compatActivity = (activity as AppCompatActivity)
+
+        compatActivity.setSupportActionBar(binding.movieToolbar)
+
+        compatActivity.supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+            it.setDisplayShowTitleEnabled(false)
+        }
     }
 
     private fun populateView(movie: Movie) {
