@@ -34,18 +34,27 @@
         tools:ignore="ContentDescription"
         tools:src="@tools:sample/backgrounds/scenic" />
 
-    <ImageView
-        android:id="@+id/movie_poster"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/movie_poster_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:scaleType="fitCenter"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="16dp"
+        app:layout_constraintDimensionRatio="10:15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/movie_title"
@@ -59,7 +68,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@id/movie_poster"
+        app:layout_constraintTop_toBottomOf="@id/movie_poster_card"
         tools:text="John Wick: Chapter 3 - Parabellum some thing more and more" />
 
     <TextView
