@@ -34,6 +34,16 @@
         tools:ignore="ContentDescription"
         tools:src="@tools:sample/backgrounds/scenic" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.25"
+        android:background="@color/colorSeparator"
+        app:layout_constraintBottom_toBottomOf="@id/movie_backdrop"
+        app:layout_constraintEnd_toEndOf="@id/movie_backdrop"
+        app:layout_constraintStart_toStartOf="@id/movie_backdrop"
+        app:layout_constraintTop_toTopOf="@id/movie_backdrop" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/movie_poster_card"
         android:layout_width="0dp"
