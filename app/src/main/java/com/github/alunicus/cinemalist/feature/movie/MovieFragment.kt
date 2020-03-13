@@ -64,6 +64,8 @@ class MovieFragment : Fragment() {
             movieYear.text = movie.releaseDate.asYear().toString()
             movieOverview.text = movie.overview
             movieDuration.text = getDuration(movie.runtime.toDuration())
+            movieRating.text = movie.voteAverage.toString()
+            movieVoteCount.text = movie.voteCount.toString()
         }
     }
 

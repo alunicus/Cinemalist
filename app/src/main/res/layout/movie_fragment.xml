@@ -132,6 +132,36 @@
         app:layout_constraintTop_toTopOf="@+id/movie_year"
         tools:text="2h 11m" />
 
+    <TextView
+        android:id="@+id/movie_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/ic_star_24dp"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
+        app:layout_constraintStart_toStartOf="@id/movie_start_guide"
+        app:layout_constraintTop_toBottomOf="@id/movie_duration"
+        tools:text="7.8" />
+
+    <TextView
+        android:id="@+id/movie_vote_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorTextPrimaryLight"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
+        app:layout_constraintStart_toStartOf="@id/movie_start_guide"
+        app:layout_constraintTop_toBottomOf="@id/movie_rating"
+        tools:ignore="SmallSp"
+        tools:text="3986" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_cast_list"
         android:layout_width="0dp"
@@ -142,7 +172,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toStartOf="@+id/movie_end_guide"
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
-        app:layout_constraintTop_toBottomOf="@+id/movie_year" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_vote_count" />
 
     <TextView
         android:id="@+id/movie_overview_label"
