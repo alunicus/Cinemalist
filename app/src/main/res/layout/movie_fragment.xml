@@ -164,6 +164,20 @@
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
         app:layout_constraintTop_toTopOf="@id/movie_rating" />
 
+    <ImageView
+        android:id="@+id/movie_add_to_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:padding="4dp"
+        android:src="@drawable/button_favorite_background"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
+        app:layout_constraintStart_toEndOf="@id/movie_rating"
+        app:layout_constraintTop_toTopOf="@id/movie_rating" />
+
     <TextView
         android:id="@+id/movie_vote_count"
         android:layout_width="wrap_content"

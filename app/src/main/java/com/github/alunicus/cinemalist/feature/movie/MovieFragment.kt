@@ -75,6 +75,10 @@ class MovieFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
+            movieAddToFavorite.setOnClickListener {
+                it.isSelected = !it.isSelected
+            }
         }
     }
 
