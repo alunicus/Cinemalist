@@ -141,6 +141,7 @@
         android:drawablePadding="8dp"
         android:drawableTint="@color/colorPrimary"
         android:gravity="center_vertical"
+        android:paddingTop="4dp"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -148,6 +149,20 @@
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@id/movie_duration"
         tools:text="7.8" />
+
+    <ImageView
+        android:id="@+id/movie_add_to_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:padding="4dp"
+        android:src="@drawable/ic_list_add_24dp"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@id/movie_rating"
+        app:layout_constraintStart_toStartOf="@id/movie_start_guide"
+        app:layout_constraintTop_toTopOf="@id/movie_rating" />
 
     <TextView
         android:id="@+id/movie_vote_count"

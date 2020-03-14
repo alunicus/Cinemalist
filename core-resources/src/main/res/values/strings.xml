@@ -12,4 +12,6 @@
 
     <string name="movie_overview_text">Overview</string>
     <string name="movie_duration">%1$sh %2$sm</string>
+
+    <string name="movie_add_to_list_message">Add a movie to a list</string>
 </resources>
