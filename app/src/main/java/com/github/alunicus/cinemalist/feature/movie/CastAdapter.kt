@@ -3,7 +3,7 @@ package com.github.alunicus.cinemalist.feature.movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.alunicus.cinemalist.data.Person
+import com.github.alunicus.cinemalist.data.Cast
 import com.github.alunicus.cinemalist.databinding.ItemCastBinding
 import com.github.alunicus.cinemalist.extensions.loadCircleImage
 
@@ -11,7 +11,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.ViewHolder>() {
     private var _binding: ItemCastBinding? = null
     private val binding get() = _binding!!
 
-    private val items = mutableListOf<Person>()
+    private val items = mutableListOf<Cast>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         _binding = ItemCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,8 +28,15 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.ViewHolder>() {
             val person = items[adapterPosition]
 
             name.text = person.name
-            photo.loadCircleImage(person.photoUrl)
+            photo.loadCircleImage(person.profilePath)
         }
+    }
+
+    fun setItems(list: List<Cast>) {
+        items.clear()
+        items.addAll(list)
+
+        notifyDataSetChanged()
     }
 
     class ViewHolder(binding: ItemCastBinding) : RecyclerView.ViewHolder(binding.root) {

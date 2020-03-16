@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.data.Duration
-import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
 import com.github.alunicus.cinemalist.extensions.loadBlurredImage
@@ -23,6 +22,8 @@ class MovieFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MovieViewModel by viewModel()
+
+    private val castAdapter: CastAdapter = CastAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +44,8 @@ class MovieFragment : Fragment() {
         }
 
         viewModel.loadMovie(458156)
+
+        binding.movieCastList.adapter = castAdapter
     }
 
     private fun initToolbar() {
@@ -57,16 +60,20 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun populateView(movie: Movie) {
+    private fun populateView(fullMovie: FullMovie) {
         binding.apply {
-            moviePoster.loadImage(movie.posterPath)
-            movieBackdrop.loadBlurredImage(context, movie.backdropPath)
-            movieTitle.text = movie.title
-            movieYear.text = movie.releaseDate.asYear().toString()
-            movieOverview.text = movie.overview
-            movieDuration.text = getDuration(movie.runtime.toDuration())
-            movieRating.text = movie.voteAverage.toString()
-            movieVoteCount.text = movie.voteCount.toString()
+            fullMovie.apply {
+                moviePoster.loadImage(movie.posterPath)
+                movieBackdrop.loadBlurredImage(context, movie.backdropPath)
+                movieTitle.text = movie.title
+                movieYear.text = movie.releaseDate.asYear().toString()
+                movieOverview.text = movie.overview
+                movieDuration.text = getDuration(movie.runtime.toDuration())
+                movieRating.text = movie.voteAverage.toString()
+                movieVoteCount.text = movie.voteCount.toString()
+
+                castAdapter.setItems(cast)
+            }
 
             movieAddToList.setOnClickListener {
                 Toast.makeText(

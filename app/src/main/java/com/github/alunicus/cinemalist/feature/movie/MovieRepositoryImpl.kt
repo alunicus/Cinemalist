@@ -4,7 +4,9 @@ import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.core.Network
 import com.github.alunicus.cinemalist.core.Result
+import com.github.alunicus.cinemalist.data.Cast
 import com.github.alunicus.cinemalist.data.Movie
+import com.github.alunicus.cinemalist.extensions.toCast
 import com.github.alunicus.cinemalist.extensions.toMovie
 
 class MovieRepositoryImpl(network: Network) : MovieRepository {
@@ -14,6 +16,15 @@ class MovieRepositoryImpl(network: Network) : MovieRepository {
         return try {
             Result.Success(api.getMovieById(id, BuildConfig.API_KEY).toMovie())
         } catch (e: Exception) {
+            Result.Failure(Error.ServerError)
+        }
+    }
+
+    override suspend fun getMovieCast(id: Int): Result<List<Cast>, Error> {
+        return try {
+            Result.Success(api.getMovieCredits(id, BuildConfig.API_KEY).toCast())
+        } catch (e: Exception) {
+            e.printStackTrace()
             Result.Failure(Error.ServerError)
         }
     }
