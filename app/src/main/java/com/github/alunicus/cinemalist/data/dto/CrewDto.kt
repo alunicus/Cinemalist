@@ -6,6 +6,6 @@ data class CrewDto(
     val name: String,
     val creditId: String,
     val department: String,
-    val gender: Int,
-    val profilePath: String
+    val gender: Int?,
+    val profilePath: String?
 )

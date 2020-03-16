@@ -5,8 +5,8 @@ data class CastDto(
     val id: Int,
     val name: String,
     val character: String,
-    val profilePath: String,
+    val profilePath: String?,
     val creditId: String,
-    val gender: Int,
+    val gender: Int?,
     val order: Int
 )

@@ -35,7 +35,7 @@ private fun CastDto.toCast() = Cast(
     id,
     name,
     character,
-    profilePath,
+    profilePath ?: "",
     order
 )
 
