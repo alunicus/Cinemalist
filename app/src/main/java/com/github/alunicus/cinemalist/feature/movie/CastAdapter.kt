@@ -3,6 +3,7 @@ package com.github.alunicus.cinemalist.feature.movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.data.Cast
 import com.github.alunicus.cinemalist.databinding.ItemCastBinding
 import com.github.alunicus.cinemalist.extensions.loadCircleImage
@@ -28,7 +29,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.ViewHolder>() {
             val person = items[adapterPosition]
 
             name.text = person.name
-            photo.loadCircleImage(person.profilePath)
+            photo.loadCircleImage(person.profilePath, R.drawable.person_placeholder)
         }
     }
 

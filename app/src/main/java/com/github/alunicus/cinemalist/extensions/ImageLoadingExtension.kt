@@ -23,9 +23,10 @@ fun ImageView.loadBlurredImage(context: Context?, url: String, radius: Float = 1
     }
 }
 
-fun ImageView.loadCircleImage(url: String) {
+fun ImageView.loadCircleImage(url: String, onErrorResId: Int) {
     this.load("$BASE_IMAGE_URL$url") {
         crossfade(true)
         transformations(CircleCropTransformation())
+        error(onErrorResId)
     }
 }
