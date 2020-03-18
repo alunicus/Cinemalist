@@ -24,7 +24,6 @@ class MovieRepositoryImpl(network: Network) : MovieRepository {
         return try {
             Result.Success(api.getMovieCredits(id, BuildConfig.API_KEY).toCast())
         } catch (e: Exception) {
-            e.printStackTrace()
             Result.Failure(Error.ServerError)
         }
     }
