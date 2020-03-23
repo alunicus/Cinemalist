@@ -31,7 +31,8 @@ class MovieRepositoryTest : KoinTest {
 
                 val actualResult = repository.getMovieById(1)
 
-                assertThat(actualResult).isInstanceOf(Result.Success::class.java)
+                assertThat(actualResult)
+                    .isInstanceOf(Result.Success::class.java)
             }
         }
 
@@ -43,9 +44,8 @@ class MovieRepositoryTest : KoinTest {
             runBlocking {
                 val actualResult = (repository.getMovieById(1) as Result.Success).result
 
-                assertThat(actualResult).isInstanceOf(Movie::class.java)
-                assertThat(actualResult.id).isEqualTo(458156)
-                assertThat(actualResult.originalTitle).isEqualTo("John Wick: Chapter 3 - Parabellum")
+                assertThat(actualResult)
+                    .isInstanceOf(Movie::class.java)
             }
         }
 
@@ -57,7 +57,8 @@ class MovieRepositoryTest : KoinTest {
             runBlocking {
                 val actualResult = repository.getMovieById(1)
 
-                assertThat(actualResult).isInstanceOf(Result.Failure::class.java)
+                assertThat(actualResult)
+                    .isInstanceOf(Result.Failure::class.java)
             }
         }
     }
@@ -65,13 +66,43 @@ class MovieRepositoryTest : KoinTest {
     @Nested
     inner class GetMovieCastTest {
         @Test
-        fun `should return cast by movie id`() {
+        fun `should return success object if request is fine`() {
+            coEvery { network.api.getMovieCredits(1, BuildConfig.API_KEY) }
+                .returns(resourceLoader.readFromJson("credits.json"))
 
+            runBlocking {
+                val actualResult = repository.getMovieCast(1)
+
+                assertThat(actualResult)
+                    .isInstanceOf(Result.Success::class.java)
+            }
         }
 
         @Test
-        fun `should return server error for a movie cast`() {
+        fun `should return mapped instance of Cast by movie id in case of success`() {
+            coEvery { network.api.getMovieCredits(1, BuildConfig.API_KEY) }
+                .returns(resourceLoader.readFromJson("credits.json"))
 
+            runBlocking {
+                val actualResult = (repository.getMovieCast(1) as Result.Success).result
+
+                assertThat(actualResult)
+                    .isInstanceOf(List::class.java)
+                    .hasSize(7)
+            }
+        }
+
+        @Test
+        fun `should return server error in case of failure`() {
+            coEvery { network.api.getMovieCredits(1, BuildConfig.API_KEY) }
+                .throws(Exception())
+
+            runBlocking {
+                val actualResult = repository.getMovieCast(1)
+
+                assertThat(actualResult)
+                    .isInstanceOf(Result.Failure::class.java)
+            }
         }
     }
 }
