@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.github.alunicus.cinemalist.R
-import com.github.alunicus.cinemalist.data.Duration
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
 import com.github.alunicus.cinemalist.extensions.loadBlurredImage
 import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.extensions.toDuration
+import com.github.alunicus.cinemalist.feature.movie.model.Duration
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {

@@ -1,6 +1,6 @@
 package com.github.alunicus.cinemalist.extensions
 
-import com.github.alunicus.cinemalist.data.Duration
+import com.github.alunicus.cinemalist.feature.movie.model.Duration
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test

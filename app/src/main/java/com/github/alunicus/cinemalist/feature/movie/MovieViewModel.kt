@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.core.Result
-import com.github.alunicus.cinemalist.data.Cast
-import com.github.alunicus.cinemalist.data.Movie
+import com.github.alunicus.cinemalist.feature.movie.model.Cast
+import com.github.alunicus.cinemalist.feature.movie.model.Movie
 import kotlinx.coroutines.launch
 
 class MovieViewModel(

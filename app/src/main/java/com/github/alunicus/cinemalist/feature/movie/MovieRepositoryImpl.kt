@@ -4,10 +4,10 @@ import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.core.MovieNetwork
 import com.github.alunicus.cinemalist.core.Result
-import com.github.alunicus.cinemalist.data.Cast
-import com.github.alunicus.cinemalist.data.Movie
 import com.github.alunicus.cinemalist.extensions.toCast
 import com.github.alunicus.cinemalist.extensions.toMovie
+import com.github.alunicus.cinemalist.feature.movie.model.Cast
+import com.github.alunicus.cinemalist.feature.movie.model.Movie
 
 class MovieRepositoryImpl(private val network: MovieNetwork) : MovieRepository {
     override suspend fun getMovieById(id: Int): Result<Movie, Error> {

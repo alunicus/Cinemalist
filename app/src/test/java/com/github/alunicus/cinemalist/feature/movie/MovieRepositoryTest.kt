@@ -4,7 +4,7 @@ import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.ResourceLoader
 import com.github.alunicus.cinemalist.core.MovieNetwork
 import com.github.alunicus.cinemalist.core.Result
-import com.github.alunicus.cinemalist.data.Movie
+import com.github.alunicus.cinemalist.feature.movie.model.Movie
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking

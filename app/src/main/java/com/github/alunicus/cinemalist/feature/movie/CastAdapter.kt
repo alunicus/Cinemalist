@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.alunicus.cinemalist.R
-import com.github.alunicus.cinemalist.data.Cast
 import com.github.alunicus.cinemalist.databinding.ItemCastBinding
 import com.github.alunicus.cinemalist.extensions.loadCircleImage
+import com.github.alunicus.cinemalist.feature.movie.model.Cast
 
 class CastAdapter : RecyclerView.Adapter<CastAdapter.ViewHolder>() {
     private var _binding: ItemCastBinding? = null

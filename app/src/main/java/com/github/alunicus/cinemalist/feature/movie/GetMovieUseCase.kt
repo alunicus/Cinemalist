@@ -2,7 +2,7 @@ package com.github.alunicus.cinemalist.feature.movie
 
 import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.core.Result
-import com.github.alunicus.cinemalist.data.Movie
+import com.github.alunicus.cinemalist.feature.movie.model.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

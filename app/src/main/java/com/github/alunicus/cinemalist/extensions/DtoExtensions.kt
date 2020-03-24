@@ -1,43 +1,47 @@
 package com.github.alunicus.cinemalist.extensions
 
-import com.github.alunicus.cinemalist.data.Cast
-import com.github.alunicus.cinemalist.data.Movie
-import com.github.alunicus.cinemalist.data.SearchMovie
-import com.github.alunicus.cinemalist.data.SearchResult
-import com.github.alunicus.cinemalist.data.dto.*
+import com.github.alunicus.cinemalist.feature.movie.model.dto.CastDto
+import com.github.alunicus.cinemalist.feature.movie.model.dto.MovieDto
+import com.github.alunicus.cinemalist.feature.movie.model.Cast
+import com.github.alunicus.cinemalist.feature.movie.model.Movie
+import com.github.alunicus.cinemalist.feature.search.model.SearchMovie
+import com.github.alunicus.cinemalist.feature.search.model.SearchResult
+import com.github.alunicus.cinemalist.feature.search.model.dto.*
 
-fun MovieDto.toMovie() = Movie(
-    id,
-    title,
-    originalTitle,
-    originalLanguage,
-    popularity,
-    adult,
-    budget,
-    homepage ?: "",
-    overview ?: "",
-    posterPath ?: "",
-    backdropPath ?: "",
-    releaseDate,
-    revenue,
-    runtime ?: 0,
-    status,
-    video,
-    voteAverage,
-    voteCount
-)
+fun MovieDto.toMovie() =
+    Movie(
+        id,
+        title,
+        originalTitle,
+        originalLanguage,
+        popularity,
+        adult,
+        budget,
+        homepage ?: "",
+        overview ?: "",
+        posterPath ?: "",
+        backdropPath ?: "",
+        releaseDate,
+        revenue,
+        runtime ?: 0,
+        status,
+        video,
+        voteAverage,
+        voteCount
+    )
 
 fun MovieCreditsDto.toCast() = cast.toCastList()
 
 private fun List<CastDto>.toCastList() = asSequence().map { it.toCast() }.toList()
 
-private fun CastDto.toCast() = Cast(
-    id,
-    name,
-    character,
-    profilePath ?: "",
-    order
-)
+private fun CastDto.toCast() =
+    Cast(
+        id,
+        name,
+        character,
+        profilePath ?: "",
+        order
+    )
 
 fun SearchResultsDto.toSearchResult() = SearchResult(
     totalResults,

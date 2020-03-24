@@ -1,6 +1,6 @@
 package com.github.alunicus.cinemalist.feature.search
 
-import com.github.alunicus.cinemalist.data.dto.SearchResultsDto
+import com.github.alunicus.cinemalist.feature.search.model.dto.SearchResultsDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

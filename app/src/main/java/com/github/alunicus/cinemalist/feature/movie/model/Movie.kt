@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.data
+package com.github.alunicus.cinemalist.feature.movie.model
 
 import java.util.*
 

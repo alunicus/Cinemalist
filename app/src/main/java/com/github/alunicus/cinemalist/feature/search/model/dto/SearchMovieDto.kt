@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.data.dto
+package com.github.alunicus.cinemalist.feature.search.model.dto
 
 data class SearchMovieDto(
     val adult: Boolean,
