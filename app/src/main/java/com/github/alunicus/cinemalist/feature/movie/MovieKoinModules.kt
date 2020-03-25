@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist
+package com.github.alunicus.cinemalist.feature.movie
 
 import com.github.alunicus.cinemalist.feature.movie.data.*
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieCastUseCase
@@ -10,9 +10,6 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-val modules = module {
-}
 
 val movieModule = module {
     factory {
