@@ -3,9 +3,8 @@ package com.github.alunicus.cinemalist.feature.movie.data
 import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.extensions.toCast
 import com.github.alunicus.cinemalist.extensions.toMovie
-import com.github.alunicus.cinemalist.feature.movie.MovieApi
-import com.github.alunicus.cinemalist.feature.movie.model.Cast
-import com.github.alunicus.cinemalist.feature.movie.model.Movie
+import com.github.alunicus.cinemalist.feature.movie.domain.model.Cast
+import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

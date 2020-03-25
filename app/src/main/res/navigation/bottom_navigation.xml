@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/action_home"
-        android:name="com.github.alunicus.cinemalist.feature.movie.MovieFragment"
+        android:name="com.github.alunicus.cinemalist.feature.movie.presentation.MovieFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/action_search"
-        android:name="com.github.alunicus.cinemalist.feature.search.SearchFragment"
+        android:name="com.github.alunicus.cinemalist.feature.search.presentation.SearchFragment"
         android:label="search_fragment"
         tools:layout="@layout/search_fragment" />
     <fragment

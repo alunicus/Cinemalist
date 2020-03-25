@@ -3,7 +3,9 @@ package com.github.alunicus.cinemalist.feature.movie
 import com.github.alunicus.cinemalist.ResourceLoader
 import com.github.alunicus.cinemalist.core.Result
 import com.github.alunicus.cinemalist.feature.movie.data.MovieRemoteDataSource
-import com.github.alunicus.cinemalist.feature.movie.model.Movie
+import com.github.alunicus.cinemalist.feature.movie.data.MovieRepository
+import com.github.alunicus.cinemalist.feature.movie.data.MovieRepositoryImpl
+import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
