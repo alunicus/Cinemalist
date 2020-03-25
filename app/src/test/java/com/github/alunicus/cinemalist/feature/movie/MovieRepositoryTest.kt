@@ -1,9 +1,8 @@
 package com.github.alunicus.cinemalist.feature.movie
 
-import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.ResourceLoader
-import com.github.alunicus.cinemalist.core.MovieNetwork
 import com.github.alunicus.cinemalist.core.Result
+import com.github.alunicus.cinemalist.feature.movie.data.MovieRemoteDataSourceImpl
 import com.github.alunicus.cinemalist.feature.movie.model.Movie
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -17,7 +16,7 @@ class MovieRepositoryTest : KoinTest {
 
     private val resourceLoader = ResourceLoader("./feature/movie/")
 
-    private val network: MovieNetwork = mockk()
+    private val network: MovieRemoteDataSourceImpl = mockk()
 
     private val repository: MovieRepository = MovieRepositoryImpl(network)
 
@@ -26,7 +25,7 @@ class MovieRepositoryTest : KoinTest {
         @Test
         fun `should return success object if request is fine`() {
             runBlocking {
-                coEvery { network.api.getMovieById(1, BuildConfig.API_KEY) }
+                coEvery { network.getMovieById(1) }
                     .returns(resourceLoader.readFromJson("movie.json"))
 
                 val actualResult = repository.getMovieById(1)
@@ -38,7 +37,7 @@ class MovieRepositoryTest : KoinTest {
 
         @Test
         fun `should return mapped instance of Movie in case of success`() {
-            coEvery { network.api.getMovieById(1, BuildConfig.API_KEY) }
+            coEvery { network.getMovieById(1) }
                 .returns(resourceLoader.readFromJson("movie.json"))
 
             runBlocking {
@@ -51,7 +50,7 @@ class MovieRepositoryTest : KoinTest {
 
         @Test
         fun `should return server error in case of failure`() {
-            coEvery { network.api.getMovieById(1, BuildConfig.API_KEY) }
+            coEvery { network.getMovieById(1) }
                 .throws(Exception())
 
             runBlocking {
@@ -67,7 +66,7 @@ class MovieRepositoryTest : KoinTest {
     inner class GetMovieCastTest {
         @Test
         fun `should return success object if request is fine`() {
-            coEvery { network.api.getMovieCredits(1, BuildConfig.API_KEY) }
+            coEvery { network.getMovieCredits(1) }
                 .returns(resourceLoader.readFromJson("credits.json"))
 
             runBlocking {
@@ -80,7 +79,7 @@ class MovieRepositoryTest : KoinTest {
 
         @Test
         fun `should return mapped instance of Cast by movie id in case of success`() {
-            coEvery { network.api.getMovieCredits(1, BuildConfig.API_KEY) }
+            coEvery { network.getMovieCredits(1) }
                 .returns(resourceLoader.readFromJson("credits.json"))
 
             runBlocking {
@@ -94,7 +93,7 @@ class MovieRepositoryTest : KoinTest {
 
         @Test
         fun `should return server error in case of failure`() {
-            coEvery { network.api.getMovieCredits(1, BuildConfig.API_KEY) }
+            coEvery { network.getMovieCredits(1) }
                 .throws(Exception())
 
             runBlocking {
