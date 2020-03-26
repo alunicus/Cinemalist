@@ -1,12 +1,8 @@
-package com.github.alunicus.cinemalist.extensions
+package com.github.alunicus.cinemalist.feature.movie.domain.model
 
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.CastDto
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDto
-import com.github.alunicus.cinemalist.feature.movie.domain.model.Cast
-import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
-import com.github.alunicus.cinemalist.feature.search.domain.model.SearchMovie
-import com.github.alunicus.cinemalist.feature.search.domain.model.SearchResult
-import com.github.alunicus.cinemalist.feature.search.domain.model.dto.*
+import com.github.alunicus.cinemalist.feature.search.domain.model.dto.MovieCreditsDto
 
 fun MovieDto.toMovie() =
     Movie(
@@ -42,20 +38,3 @@ private fun CastDto.toCast() =
         profilePath ?: "",
         order
     )
-
-fun SearchResultsDto.toSearchResult() = SearchResult(
-    totalResults,
-    results.toSearchMovies()
-)
-
-private fun List<SearchMovieDto>.toSearchMovies() = asSequence().map { it.toSearchMovie() }.toList()
-
-private fun SearchMovieDto.toSearchMovie() = SearchMovie(
-    id,
-    title,
-    overview,
-    posterPath ?: "",
-    popularity,
-    voteAverage,
-    voteCount
-)

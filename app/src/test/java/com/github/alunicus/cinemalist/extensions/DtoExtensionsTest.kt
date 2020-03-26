@@ -2,10 +2,12 @@ package com.github.alunicus.cinemalist.extensions
 
 import com.github.alunicus.cinemalist.ResourceLoader
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
+import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDto
+import com.github.alunicus.cinemalist.feature.movie.domain.model.toMovie
 import com.github.alunicus.cinemalist.feature.search.domain.model.SearchMovie
 import com.github.alunicus.cinemalist.feature.search.domain.model.SearchResult
-import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDto
 import com.github.alunicus.cinemalist.feature.search.domain.model.dto.SearchResultsDto
+import com.github.alunicus.cinemalist.feature.search.domain.model.toSearchResult
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
