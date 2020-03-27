@@ -1,7 +1,7 @@
 package com.github.alunicus.cinemalist.feature.movie.domain.model
 
 import com.github.alunicus.cinemalist.ResourceLoader
-import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDto
+import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDetailsDto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.util.*
@@ -19,14 +19,14 @@ class MovieDtoExtensionsTest {
             143
         )
 
-        val actualResult = resourceLoader.readFromJson<MovieDto>("movie_dto.json").toMovie()
+        val actualResult = resourceLoader.readFromJson<MovieDetailsDto>("movie_dto.json").toMovie()
 
         assertThat(actualResult).isEqualTo(expectedMovie)
     }
 
     @Test
     fun `should return Movie from movieDto with correctly handled null fields`() {
-        val movieDto = resourceLoader.readFromJson<MovieDto>("movie_dto_with_nulls.json")
+        val movieDto = resourceLoader.readFromJson<MovieDetailsDto>("movie_dto_with_nulls.json")
 
         assertThat(movieDto.toMovie()).isEqualTo(getExpectedMovie())
     }
@@ -37,8 +37,8 @@ class MovieDtoExtensionsTest {
         posterPath: String = "",
         backdropPath: String = "",
         runtime: Int = 0
-    ): Movie {
-        return Movie(
+    ): MovieDetails {
+        return MovieDetails(
             24428,
             "The Avengers",
             "The Avengers",

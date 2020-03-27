@@ -18,14 +18,14 @@ class MovieRepositoryTest : KoinTest {
     private val repository: MovieRepository = MovieRepositoryImpl(movieRemoteDataSource)
 
     @Nested
-    inner class GetMovieByIdTest {
+    inner class GetMovieDetailsByIdTest {
         @Test
         fun `should return success object if request is fine`() {
             runBlocking {
-                coEvery { movieRemoteDataSource.getMovieById(1) }
+                coEvery { movieRemoteDataSource.getMovieDetailsById(1) }
                     .returns(mockk())
 
-                val actualResult = repository.getMovieById(1)
+                val actualResult = repository.getMovieDetailsById(1)
 
                 assertThat(actualResult)
                     .isInstanceOf(Result.Success::class.java)
@@ -34,11 +34,11 @@ class MovieRepositoryTest : KoinTest {
 
         @Test
         fun `should return server error in case of failure`() {
-            coEvery { movieRemoteDataSource.getMovieById(1) }
+            coEvery { movieRemoteDataSource.getMovieDetailsById(1) }
                 .throws(Exception())
 
             runBlocking {
-                val actualResult = repository.getMovieById(1)
+                val actualResult = repository.getMovieDetailsById(1)
 
                 assertThat(actualResult)
                     .isInstanceOf(Result.Failure::class.java)

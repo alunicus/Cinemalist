@@ -15,7 +15,7 @@ import com.github.alunicus.cinemalist.extensions.loadBlurredImage
 import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.extensions.toDuration
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Duration
-import com.github.alunicus.cinemalist.feature.movie.domain.model.FullMovie
+import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
@@ -62,17 +62,17 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun populateView(fullMovie: FullMovie) {
+    private fun populateView(movie: Movie) {
         binding.apply {
-            fullMovie.apply {
-                moviePoster.loadImage(movie.posterPath)
-                movieBackdrop.loadBlurredImage(context, movie.backdropPath)
-                movieTitle.text = movie.title
-                movieYear.text = movie.releaseDate.asYear().toString()
-                movieOverview.text = movie.overview
-                movieDuration.text = getDuration(movie.runtime.toDuration())
-                movieRating.text = movie.voteAverage.toString()
-                movieVoteCount.text = movie.voteCount.toString()
+            movie.apply {
+                moviePoster.loadImage(movieDetails.posterPath)
+                movieBackdrop.loadBlurredImage(context, movieDetails.backdropPath)
+                movieTitle.text = movieDetails.title
+                movieYear.text = movieDetails.releaseDate.asYear().toString()
+                movieOverview.text = movieDetails.overview
+                movieDuration.text = getDuration(movieDetails.runtime.toDuration())
+                movieRating.text = movieDetails.voteAverage.toString()
+                movieVoteCount.text = movieDetails.voteCount.toString()
 
                 castAdapter.setItems(cast)
             }

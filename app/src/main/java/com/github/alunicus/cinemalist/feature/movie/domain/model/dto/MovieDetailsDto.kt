@@ -2,7 +2,7 @@ package com.github.alunicus.cinemalist.feature.movie.domain.model.dto
 
 import java.util.*
 
-data class MovieDto(
+data class MovieDetailsDto(
     val adult: Boolean,
     val backdropPath: String?,
     val belongsToCollection: BelongsToCollectionDto?,
