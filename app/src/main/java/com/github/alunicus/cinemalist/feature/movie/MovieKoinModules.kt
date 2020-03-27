@@ -1,7 +1,6 @@
 package com.github.alunicus.cinemalist.feature.movie
 
 import com.github.alunicus.cinemalist.feature.movie.data.*
-import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieCastUseCase
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieUseCase
 import com.github.alunicus.cinemalist.feature.movie.presentation.MovieViewModel
 import com.google.gson.FieldNamingPolicy
@@ -29,9 +28,7 @@ val movieModule = module {
 
     single<MovieRepository> { MovieRepositoryImpl(get()) }
 
-    viewModel { MovieViewModel(get(), get()) }
+    viewModel { MovieViewModel(get()) }
 
     factory { GetMovieUseCase(get()) }
-
-    factory { GetMovieCastUseCase(get()) }
 }
