@@ -4,6 +4,8 @@ import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.core.Result
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Cast
 import com.github.alunicus.cinemalist.feature.movie.domain.model.MovieDetails
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MovieRepositoryImpl(private val remoteDataSource: MovieRemoteDataSource) :
     MovieRepository {
@@ -16,10 +18,12 @@ class MovieRepositoryImpl(private val remoteDataSource: MovieRemoteDataSource) :
     }
 
     private suspend fun <T> request(call: suspend () -> T): Result<T, Error> {
-        return try {
-            Result.Success(call.invoke())
-        } catch (e: Exception) {
-            Result.Failure(Error.ServerError)
+        return withContext(Dispatchers.IO) {
+            try {
+                Result.Success(call.invoke())
+            } catch (e: Exception) {
+                Result.Failure(Error.ServerError)
+            }
         }
     }
 }
