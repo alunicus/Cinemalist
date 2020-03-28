@@ -1,9 +1,6 @@
-package com.github.alunicus.cinemalist.feature.movie
+package com.github.alunicus.cinemalist.feature.movie.data
 
 import com.github.alunicus.cinemalist.core.Result
-import com.github.alunicus.cinemalist.feature.movie.data.MovieRemoteDataSource
-import com.github.alunicus.cinemalist.feature.movie.data.MovieRepository
-import com.github.alunicus.cinemalist.feature.movie.data.MovieRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
