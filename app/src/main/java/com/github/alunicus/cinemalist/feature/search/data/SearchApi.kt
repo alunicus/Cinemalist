@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface SearchApi {
     @GET("search/movie")
-    suspend fun getSearchResult(@Query("query") query: String, @Query("api_key") apiKey: String): SearchResultsDto
+    suspend fun getSearchResult(@Query("query") query: String): SearchResultsDto
 }

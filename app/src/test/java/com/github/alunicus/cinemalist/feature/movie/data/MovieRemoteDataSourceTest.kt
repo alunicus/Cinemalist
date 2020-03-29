@@ -1,6 +1,5 @@
 package com.github.alunicus.cinemalist.feature.movie.data
 
-import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.ResourceLoader
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Cast
 import com.github.alunicus.cinemalist.feature.movie.domain.model.MovieDetails
@@ -20,7 +19,7 @@ class MovieRemoteDataSourceTest {
     @Test
     fun `should return MovieDetails object converted from MovieDetailsDto`() {
         runBlocking {
-            coEvery { movieApi.getMovieDetailsById(1, BuildConfig.API_KEY) }
+            coEvery { movieApi.getMovieDetailsById(1) }
                 .returns(resourceLoader.readFromJson("movie.json"))
 
             val actualResult = remoteDataSource.getMovieDetailsById(1)
@@ -33,7 +32,7 @@ class MovieRemoteDataSourceTest {
     @Test
     fun `should return Cast list converted from MovieCredits`() {
         runBlocking {
-            coEvery { movieApi.getMovieCredits(1, BuildConfig.API_KEY) }
+            coEvery { movieApi.getMovieCredits(1) }
                 .returns(resourceLoader.readFromJson("credits.json"))
 
             val actualResult = remoteDataSource.getMovieCredits(1)
