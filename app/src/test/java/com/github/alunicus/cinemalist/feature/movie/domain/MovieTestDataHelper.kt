@@ -39,8 +39,14 @@ fun getTestMovieDetails(
     21427
 )
 
-fun getTestCastList() = listOf(
+fun getTestCastListWithoutNulls() = listOf(
     Cast(6384, "Keanu Reeves", "John Wick", "/bOlYWhVuOiU6azC4Bw6zlXZ5QTC.jpg", 0),
     Cast(4587, "Halle Berry", "Sofia", "/iwFIGOO9jSwymlJdYhTOdmJqciz.jpg", 1),
     Cast(6972, "Ian McShane", "Winston", "/pY9ud4BJwHekNiO4MMItPbgkdAy.jpg", 2)
+)
+
+fun getTestCastList() = listOf(
+    Cast(6384, "Keanu Reeves", "John Wick", "", 0),
+    Cast(4587, "Halle Berry", "Sofia", "", 1),
+    Cast(6972, "Ian McShane", "Winston", "", 2)
 )

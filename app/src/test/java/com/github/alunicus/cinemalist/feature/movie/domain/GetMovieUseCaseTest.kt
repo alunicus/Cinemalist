@@ -22,7 +22,7 @@ class GetMovieUseCaseTest {
     @Test
     fun `should return Movie if getting of movie details and cast are successful`() {
         val testMovieDetails = getTestMovieDetailsWithoutNulls()
-        val testCastList = getTestCastList()
+        val testCastList = getTestCastListWithoutNulls()
 
         coEvery { movieRepository.getMovieDetailsById(testMovieId) }
             .returns(Success(testMovieDetails))
