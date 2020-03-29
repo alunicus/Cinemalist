@@ -4,7 +4,7 @@ import com.github.alunicus.cinemalist.feature.movie.domain.model.Cast
 import com.github.alunicus.cinemalist.feature.movie.domain.model.MovieDetails
 import java.util.*
 
-fun getTestMovieDetailsWithoutNulls() = getTestMovieDetails(
+fun getTestMovieDetails() = getTestMovieDetailsWithNulls(
     "http://marvel.com/avengers_movie/",
     "When an unexpected enemy emerges and threatens global safety and security...",
     "/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
@@ -12,7 +12,7 @@ fun getTestMovieDetailsWithoutNulls() = getTestMovieDetails(
     143
 )
 
-fun getTestMovieDetails(
+fun getTestMovieDetailsWithNulls(
     homepage: String = "",
     overview: String = "",
     posterPath: String = "",
@@ -39,13 +39,13 @@ fun getTestMovieDetails(
     21427
 )
 
-fun getTestCastListWithoutNulls() = listOf(
+fun getTestCastList() = listOf(
     Cast(6384, "Keanu Reeves", "John Wick", "/bOlYWhVuOiU6azC4Bw6zlXZ5QTC.jpg", 0),
     Cast(4587, "Halle Berry", "Sofia", "/iwFIGOO9jSwymlJdYhTOdmJqciz.jpg", 1),
     Cast(6972, "Ian McShane", "Winston", "/pY9ud4BJwHekNiO4MMItPbgkdAy.jpg", 2)
 )
 
-fun getTestCastList() = listOf(
+fun getTestCastListWithNulls() = listOf(
     Cast(6384, "Keanu Reeves", "John Wick", "", 0),
     Cast(4587, "Halle Berry", "Sofia", "", 1),
     Cast(6972, "Ian McShane", "Winston", "", 2)

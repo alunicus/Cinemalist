@@ -21,8 +21,8 @@ class GetMovieUseCaseTest {
 
     @Test
     fun `should return Movie if getting of movie details and cast are successful`() {
-        val testMovieDetails = getTestMovieDetailsWithoutNulls()
-        val testCastList = getTestCastListWithoutNulls()
+        val testMovieDetails = getTestMovieDetails()
+        val testCastList = getTestCastList()
 
         coEvery { movieRepository.getMovieDetailsById(testMovieId) }
             .returns(Success(testMovieDetails))
@@ -39,7 +39,7 @@ class GetMovieUseCaseTest {
 
     @Test
     fun `should return Movie with cast empty list if getting of cast failed`() {
-        val testMovieDetails = getTestMovieDetailsWithoutNulls()
+        val testMovieDetails = getTestMovieDetails()
 
         coEvery { movieRepository.getMovieDetailsById(testMovieId) }
             .returns(Success(testMovieDetails))
