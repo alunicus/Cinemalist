@@ -1,8 +1,8 @@
 package com.github.alunicus.cinemalist.feature.movie.domain.model
 
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.CastDto
+import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieCreditsDto
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDetailsDto
-import com.github.alunicus.cinemalist.feature.search.domain.model.dto.MovieCreditsDto
 
 fun MovieDetailsDto.toMovie() = MovieDetails(
     id,

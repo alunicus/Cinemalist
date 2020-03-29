@@ -1,7 +1,7 @@
 package com.github.alunicus.cinemalist.feature.movie.data
 
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDetailsDto
-import com.github.alunicus.cinemalist.feature.search.domain.model.dto.MovieCreditsDto
+import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieCreditsDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
