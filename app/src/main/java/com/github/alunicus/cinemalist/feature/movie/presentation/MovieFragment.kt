@@ -16,6 +16,7 @@ import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.extensions.toDuration
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Duration
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
@@ -43,6 +44,10 @@ class MovieFragment : Fragment() {
 
         viewModel.onMovieLoaded().observe(viewLifecycleOwner) {
             populateView(it)
+        }
+
+        viewModel.onError().observe(viewLifecycleOwner) {
+            Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
         }
 
         viewModel.loadMovie(458156)
