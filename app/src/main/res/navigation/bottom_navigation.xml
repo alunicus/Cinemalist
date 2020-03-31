@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/action_home"
-        android:name="com.github.alunicus.cinemalist.feature.movie.presentation.MovieFragment"
+        android:name="com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies.PopularMoviesFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
     <fragment

@@ -4,6 +4,7 @@ import com.github.alunicus.cinemalist.core.NetworkInterceptor
 import com.github.alunicus.cinemalist.feature.movie.data.*
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieUseCase
 import com.github.alunicus.cinemalist.feature.movie.presentation.MovieViewModel
+import com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies.PopularMoviesViewModel
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -35,6 +36,8 @@ val movieModule = module {
     single<MovieRepository> { MovieRepositoryImpl(get()) }
 
     viewModel { MovieViewModel(get()) }
+
+    viewModel { PopularMoviesViewModel() }
 
     factory { GetMovieUseCase(get()) }
 }
