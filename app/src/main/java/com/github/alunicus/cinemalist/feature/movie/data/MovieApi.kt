@@ -13,6 +13,6 @@ interface MovieApi {
     @GET("movie/{movie_id}/credits")
     suspend fun getMovieCredits(@Path("movie_id") movieId: Int): MovieCreditsDto
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     suspend fun getPopularMovies(): PopularMoviesDto
 }

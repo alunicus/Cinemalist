@@ -26,9 +26,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_movies_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:numColumns="auto_fit"
+        app:spanCount="3"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -27,6 +27,7 @@ class MovieRepositoryImpl(private val remoteDataSource: MovieRemoteDataSource) :
             try {
                 Result.Success(call.invoke())
             } catch (e: Exception) {
+                e.printStackTrace()
                 Result.Failure(Error.ServerError)
             }
         }
