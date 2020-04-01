@@ -1,8 +1,6 @@
 package com.github.alunicus.cinemalist.feature.movie.domain.model
 
-import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.CastDto
-import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieCreditsDto
-import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDetailsDto
+import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.*
 
 fun MovieDetailsDto.toMovie() = MovieDetails(
     id,
@@ -35,4 +33,19 @@ private fun CastDto.toCast() = Cast(
     character,
     profilePath ?: "",
     order
+)
+
+fun PopularMoviesDto.toPopularMovies() = results.toPopularMovieList()
+
+private fun List<PopularMovieDto>.toPopularMovieList() =
+    asSequence().map { it.toPopularMovie() }.toList()
+
+private fun PopularMovieDto.toPopularMovie() = PopularMovie(
+    id,
+    title,
+    overview,
+    posterPath ?: "",
+    popularity,
+    voteAverage,
+    voteCount
 )

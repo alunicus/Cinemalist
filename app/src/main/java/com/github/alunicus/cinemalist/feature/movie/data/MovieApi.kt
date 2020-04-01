@@ -2,7 +2,7 @@ package com.github.alunicus.cinemalist.feature.movie.data
 
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieCreditsDto
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDetailsDto
-import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.PopularMovieDto
+import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.PopularMoviesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -14,5 +14,5 @@ interface MovieApi {
     suspend fun getMovieCredits(@Path("movie_id") movieId: Int): MovieCreditsDto
 
     @GET("/movie/popular")
-    suspend fun getPopularMovies(): PopularMovieDto
+    suspend fun getPopularMovies(): PopularMoviesDto
 }
