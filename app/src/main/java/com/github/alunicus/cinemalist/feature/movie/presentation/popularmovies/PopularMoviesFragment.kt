@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
@@ -17,7 +18,9 @@ class PopularMoviesFragment : Fragment() {
 
     private val viewModel: PopularMoviesViewModel by viewModel()
 
-    private val adapter = PopularMoviesAdapter()
+    private val adapter = PopularMoviesAdapter() {
+        Toast.makeText(context, "Clicked movie with id: $it", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

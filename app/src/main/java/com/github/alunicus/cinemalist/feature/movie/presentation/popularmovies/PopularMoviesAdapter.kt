@@ -8,14 +8,17 @@ import com.github.alunicus.cinemalist.databinding.ItemPopularMovieBinding
 import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.feature.movie.domain.model.PopularMovie
 
-class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder>() {
+class PopularMoviesAdapter(val onClick: (movieId: Int) -> Unit) :
+    RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder>() {
+
     private var _binding: ItemPopularMovieBinding? = null
     private val binding get() = _binding!!
 
     private val items = mutableListOf<PopularMovie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        _binding = ItemPopularMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        _binding = ItemPopularMovieBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(
             binding
@@ -32,6 +35,8 @@ class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.ViewHolde
 
             name.text = movie.title
             poster.loadImage(movie.posterPath, R.drawable.movie_placeholder)
+
+            holder.itemView.setOnClickListener { onClick(movie.id) }
         }
     }
 
