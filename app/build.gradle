@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 def apiKey = System.getenv("API_KEY")
 if (apiKey == null || apiKey.length() == 0) {
     def apiKeyPropertiesFile = rootProject.file("apikey.properties")

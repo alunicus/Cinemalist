@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.navArgs
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
 import com.github.alunicus.cinemalist.extensions.asYear
@@ -25,8 +26,9 @@ class MovieFragment : Fragment() {
 
     private val viewModel: MovieViewModel by viewModel()
 
-    private val castAdapter: CastAdapter =
-        CastAdapter()
+    private val castAdapter = CastAdapter()
+
+    val args: MovieFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +52,7 @@ class MovieFragment : Fragment() {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
         }
 
-        viewModel.loadMovie(458156)
+        viewModel.loadMovie(args.movieId)
 
         binding.movieCastList.adapter = castAdapter
     }

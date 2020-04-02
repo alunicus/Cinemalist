@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -19,7 +19,8 @@ class PopularMoviesFragment : Fragment() {
     private val viewModel: PopularMoviesViewModel by viewModel()
 
     private val adapter = PopularMoviesAdapter() {
-        Toast.makeText(context, "Clicked movie with id: $it", Toast.LENGTH_SHORT).show()
+        val direction = PopularMoviesFragmentDirections.actionHomeToMovie(it)
+        findNavController().navigate(direction)
     }
 
     override fun onCreateView(
