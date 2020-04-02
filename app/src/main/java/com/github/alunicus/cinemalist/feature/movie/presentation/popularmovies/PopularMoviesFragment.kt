@@ -1,7 +1,6 @@
 package com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,6 @@ class PopularMoviesFragment : Fragment() {
         binding.popularMoviesList.adapter = adapter
 
         viewModel.onPopularMoviesLoaded().observe(viewLifecycleOwner) {
-            Log.e("TAG", "================ items: $it")
             adapter.setItems(it)
         }
 

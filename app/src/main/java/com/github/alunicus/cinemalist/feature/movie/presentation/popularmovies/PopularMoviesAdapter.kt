@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.databinding.ItemPopularMovieBinding
-import com.github.alunicus.cinemalist.extensions.loadCircleImage
 import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.feature.movie.domain.model.PopularMovie
 
