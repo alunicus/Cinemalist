@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.github.alunicus.cinemalist.core.visibleOrGone
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,6 +29,9 @@ class PopularMoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = PopularMoviesFragmentBinding.inflate(inflater, container, false)
+
+        viewModel.loadPopularMovies()
+
         return binding.root
     }
 
@@ -44,6 +48,8 @@ class PopularMoviesFragment : Fragment() {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
         }
 
-        viewModel.loadPopularMovies()
+        viewModel.onProgressVisibilityChanged().observe(viewLifecycleOwner) {
+            binding.popularMoviesProgress.visibleOrGone(it)
+        }
     }
 }
