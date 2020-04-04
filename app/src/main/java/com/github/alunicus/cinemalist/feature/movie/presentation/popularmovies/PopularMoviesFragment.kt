@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.core.visibleOrGone
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
 import com.google.android.material.snackbar.Snackbar
@@ -30,8 +32,6 @@ class PopularMoviesFragment : Fragment() {
     ): View? {
         _binding = PopularMoviesFragmentBinding.inflate(inflater, container, false)
 
-        viewModel.loadPopularMovies()
-
         return binding.root
     }
 
@@ -51,5 +51,17 @@ class PopularMoviesFragment : Fragment() {
         viewModel.onProgressVisibilityChanged().observe(viewLifecycleOwner) {
             binding.popularMoviesProgress.visibleOrGone(it)
         }
+
+        viewModel.loadPopularMovies()
+
+        initToolbar()
+    }
+
+    private fun initToolbar() {
+        val compatActivity = (activity as AppCompatActivity)
+
+        compatActivity.setSupportActionBar(binding.popularMoviesToolbar)
+
+        compatActivity.setTitle(R.string.popular_movies_title)
     }
 }
