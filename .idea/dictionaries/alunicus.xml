@@ -2,6 +2,8 @@
   <dictionary name="alunicus">
     <words>
       <w>cinemalist</w>
+      <w>coroutine</w>
+      <w>coroutines</w>
     </words>
   </dictionary>
 </component>
