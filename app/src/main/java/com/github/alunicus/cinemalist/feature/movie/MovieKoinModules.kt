@@ -36,7 +36,7 @@ val movieModule = module {
 
     single<MovieRemoteDataSource> { MovieRemoteDataSourceImpl(get()) }
 
-    single<MovieRepository> { MovieRepositoryImpl(get()) }
+    single<MovieRepository> { MovieRepositoryImpl(get(), get()) }
 
     single { ConnectionManager(androidContext()) }
 
