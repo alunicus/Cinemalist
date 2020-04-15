@@ -1,5 +1,6 @@
 package com.github.alunicus.cinemalist.feature.movie
 
+import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.core.NetworkInterceptor
 import com.github.alunicus.cinemalist.feature.movie.data.*
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieUseCase
@@ -22,7 +23,8 @@ val movieModule = module {
             .setDateFormat("yyyy-MM-dd")
             .create()
 
-        val httpClient = OkHttpClient.Builder().addInterceptor(NetworkInterceptor())
+        val httpClient =
+            OkHttpClient.Builder().addInterceptor(NetworkInterceptor(BuildConfig.API_KEY))
 
         Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
