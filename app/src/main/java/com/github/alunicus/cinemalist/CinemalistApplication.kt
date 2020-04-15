@@ -11,7 +11,7 @@ class CinemalistApplication : Application() {
 
         startKoin {
             androidContext(this@CinemalistApplication)
-            modules(listOf(movieModule))
+            modules(listOf(sharedModule, movieModule))
         }
     }
 }

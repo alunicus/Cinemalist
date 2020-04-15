@@ -1,6 +1,5 @@
 package com.github.alunicus.cinemalist.feature.movie
 
-import com.github.alunicus.cinemalist.core.ConnectionManager
 import com.github.alunicus.cinemalist.core.NetworkInterceptor
 import com.github.alunicus.cinemalist.feature.movie.data.*
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieUseCase
@@ -10,7 +9,6 @@ import com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies.P
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -37,8 +35,6 @@ val movieModule = module {
     single<MovieRemoteDataSource> { MovieRemoteDataSourceImpl(get()) }
 
     single<MovieRepository> { MovieRepositoryImpl(get(), get()) }
-
-    single { ConnectionManager(androidContext()) }
 
     viewModel { MovieViewModel(get()) }
 
