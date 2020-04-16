@@ -17,7 +17,6 @@ import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.extensions.toDuration
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Duration
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Movie
-import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
@@ -49,7 +48,8 @@ class MovieFragment : Fragment() {
         }
 
         viewModel.onError().observe(viewLifecycleOwner) {
-            Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
+            binding.movieError.setErrorMessage(it)
+            binding.movieError.visibility = View.VISIBLE
         }
 
         viewModel.loadMovie(args.movieId)
@@ -95,6 +95,8 @@ class MovieFragment : Fragment() {
             movieAddToFavorite.setOnClickListener {
                 it.isSelected = !it.isSelected
             }
+
+            movieContentGroup.visibility = View.VISIBLE
         }
     }
 

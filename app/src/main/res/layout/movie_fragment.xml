@@ -22,6 +22,17 @@
         app:layout_constraintGuide_end="16dp"
         tools:viewBindingIgnore="true" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/movie_content_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="movie_backdrop, movie_toolbar_container, movie_poster_card,
+        movie_title, movie_year, movie_year_duration_separator, movie_duration, movie_rating,
+        movie_add_to_list, movie_add_to_favorite, movie_vote_count, movie_cast_list, movie_cast_list,
+        movie_overview_label, movie_overview_divider, movie_overview"
+        tools:visibility="visible" />
+
     <ImageView
         android:id="@+id/movie_backdrop"
         android:layout_width="0dp"
@@ -162,7 +173,8 @@
         android:tint="@color/colorPrimary"
         app:layout_constraintEnd_toStartOf="@id/movie_rating"
         app:layout_constraintStart_toStartOf="@id/movie_start_guide"
-        app:layout_constraintTop_toTopOf="@id/movie_rating" />
+        app:layout_constraintTop_toTopOf="@id/movie_rating"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/movie_add_to_favorite"
@@ -176,7 +188,8 @@
         android:tint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="@id/movie_end_guide"
         app:layout_constraintStart_toEndOf="@id/movie_rating"
-        app:layout_constraintTop_toTopOf="@id/movie_rating" />
+        app:layout_constraintTop_toTopOf="@id/movie_rating"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/movie_vote_count"
@@ -239,5 +252,18 @@
         app:layout_constraintStart_toStartOf="@+id/movie_start_guide"
         app:layout_constraintTop_toBottomOf="@+id/movie_overview_divider"
         tools:text="@tools:sample/lorem/random" />
+
+    <com.github.alunicus.cinemalist.core.ErrorView
+        android:id="@+id/movie_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

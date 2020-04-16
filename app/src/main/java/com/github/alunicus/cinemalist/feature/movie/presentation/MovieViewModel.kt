@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.alunicus.cinemalist.core.ErrorMessage
 import com.github.alunicus.cinemalist.core.Result
 import com.github.alunicus.cinemalist.extensions.handleFailure
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieUseCase
@@ -13,16 +14,16 @@ import kotlinx.coroutines.launch
 class MovieViewModel(private val movieUseCase: GetMovieUseCase) : ViewModel() {
 
     private val movieLoaded by lazy { MutableLiveData<Movie>() }
-    private val error by lazy { MutableLiveData<Int>() }
+    private val error by lazy { MutableLiveData<ErrorMessage>() }
 
     fun onMovieLoaded(): LiveData<Movie> = movieLoaded
-    fun onError(): LiveData<Int> = error
+    fun onError(): LiveData<ErrorMessage> = error
 
     fun loadMovie(movieId: Int) {
         viewModelScope.launch {
             when (val result = movieUseCase.getMovie(movieId)) {
                 is Result.Success -> movieLoaded.value = result.result
-                is Result.Failure -> error.value = result.handleFailure().messageResId
+                is Result.Failure -> error.value = result.handleFailure()
             }
         }
     }
