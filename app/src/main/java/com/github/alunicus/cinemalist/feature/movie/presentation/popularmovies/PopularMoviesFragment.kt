@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.core.visibleOrGone
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
-import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PopularMoviesFragment : Fragment() {
@@ -44,7 +43,8 @@ class PopularMoviesFragment : Fragment() {
         }
 
         viewModel.onError().observe(viewLifecycleOwner) {
-            Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
+            binding.popularMoviesError.setErrorMessage(it)
+            binding.popularMoviesError.visibility = View.VISIBLE
         }
 
         viewModel.onProgressVisibilityChanged().observe(viewLifecycleOwner) {
