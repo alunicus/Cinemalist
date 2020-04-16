@@ -1,4 +1,4 @@
-package com.github.alunicus.cinemalist.core
+package com.github.alunicus.cinemalist.extensions
 
 import android.view.View
 

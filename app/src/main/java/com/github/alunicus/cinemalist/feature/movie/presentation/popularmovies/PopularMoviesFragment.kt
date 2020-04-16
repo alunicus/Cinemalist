@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.github.alunicus.cinemalist.R
-import com.github.alunicus.cinemalist.core.visibleOrGone
+import com.github.alunicus.cinemalist.extensions.visibleOrGone
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
