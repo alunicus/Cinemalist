@@ -28,7 +28,7 @@ class MovieFragment : Fragment() {
 
     private val castAdapter = CastAdapter()
 
-    val args: MovieFragmentArgs by navArgs()
+    private val args: MovieFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,10 +62,10 @@ class MovieFragment : Fragment() {
 
         compatActivity.setSupportActionBar(binding.movieToolbar)
 
-        compatActivity.supportActionBar?.let {
-            it.setDisplayHomeAsUpEnabled(true)
-            it.setDisplayShowHomeEnabled(true)
-            it.setDisplayShowTitleEnabled(false)
+        compatActivity.supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            setDisplayShowTitleEnabled(false)
         }
     }
 

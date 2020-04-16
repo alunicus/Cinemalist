@@ -21,9 +21,8 @@ class PopularMoviesFragment : Fragment() {
 
     private val viewModel: PopularMoviesViewModel by viewModel()
 
-    private val adapter = PopularMoviesAdapter() {
-        val direction = PopularMoviesFragmentDirections.actionHomeToMovie(it)
-        findNavController().navigate(direction)
+    private val adapter = PopularMoviesAdapter {
+        findNavController().navigate(PopularMoviesFragmentDirections.actionHomeToMovie(it))
     }
 
     override fun onCreateView(
