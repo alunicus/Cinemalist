@@ -48,7 +48,8 @@ class MovieViewModelTest {
         viewModel.loadMovie(testMovieId)
 
         viewModel.onMovieLoaded().observeForTesting {
-            assertThat(viewModel.onError().value).isEqualTo(R.string.server_error)
+            assertThat(viewModel.onError().value?.imageResId).isEqualTo(R.drawable.ic_server_error_24dp)
+            assertThat(viewModel.onError().value?.messageResId).isEqualTo(R.string.server_error)
             assertThat(viewModel.onMovieLoaded().value).isNull()
         }
     }
@@ -60,7 +61,8 @@ class MovieViewModelTest {
         viewModel.loadMovie(testMovieId)
 
         viewModel.onMovieLoaded().observeForTesting {
-            assertThat(viewModel.onError().value).isEqualTo(R.string.network_connection_error)
+            assertThat(viewModel.onError().value?.imageResId).isEqualTo(R.drawable.ic_no_internet_connection_24dp)
+            assertThat(viewModel.onError().value?.messageResId).isEqualTo(R.string.network_connection_error)
             assertThat(viewModel.onMovieLoaded().value).isNull()
         }
     }
