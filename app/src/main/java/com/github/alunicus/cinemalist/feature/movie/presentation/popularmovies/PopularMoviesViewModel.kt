@@ -26,7 +26,7 @@ class PopularMoviesViewModel(private val popularMoviesUseCase: GetPopularMoviesU
 
             when (val result = popularMoviesUseCase.getPopularMovies()) {
                 is Result.Success -> popularMoviesLoaded.value = result.result
-                is Result.Failure -> error.value = result.handleFailure()
+                is Result.Failure -> error.value = result.handleFailure().messageResId
             }
 
             progressVisible.value = false

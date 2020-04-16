@@ -22,7 +22,7 @@ class MovieViewModel(private val movieUseCase: GetMovieUseCase) : ViewModel() {
         viewModelScope.launch {
             when (val result = movieUseCase.getMovie(movieId)) {
                 is Result.Success -> movieLoaded.value = result.result
-                is Result.Failure -> error.value = result.handleFailure()
+                is Result.Failure -> error.value = result.handleFailure().messageResId
             }
         }
     }
