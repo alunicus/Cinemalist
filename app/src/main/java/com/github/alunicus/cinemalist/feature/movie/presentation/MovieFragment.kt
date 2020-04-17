@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.databinding.MovieFragmentBinding
@@ -41,8 +42,6 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        initToolbar()
-
         viewModel.onMovieLoaded().observe(viewLifecycleOwner) {
             populateView(it)
         }
@@ -55,17 +54,11 @@ class MovieFragment : Fragment() {
         viewModel.loadMovie(args.movieId)
 
         binding.movieCastList.adapter = castAdapter
-    }
 
-    private fun initToolbar() {
-        val compatActivity = (activity as AppCompatActivity)
+        (activity as AppCompatActivity).supportActionBar?.hide()
 
-        compatActivity.setSupportActionBar(binding.movieToolbar)
-
-        compatActivity.supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
-            setDisplayShowTitleEnabled(false)
+        binding.movieNavigationUp.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
@@ -110,6 +103,8 @@ class MovieFragment : Fragment() {
 
     override fun onDestroyView() {
         _binding = null
+
+        (activity as AppCompatActivity).supportActionBar?.show()
 
         super.onDestroyView()
     }

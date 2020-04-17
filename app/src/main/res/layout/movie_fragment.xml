@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="movie_backdrop, movie_toolbar_container, movie_poster_card,
+        app:constraint_referenced_ids="movie_backdrop, movie_navigation_up, movie_poster_card,
         movie_title, movie_year, movie_year_duration_separator, movie_duration, movie_rating,
         movie_add_to_list, movie_add_to_favorite, movie_vote_count, movie_cast_list, movie_cast_list,
         movie_overview_label, movie_overview_divider, movie_overview"
@@ -46,6 +46,7 @@
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <View
+        android:id="@+id/movie_backdrop_overlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0.25"
@@ -55,34 +56,41 @@
         app:layout_constraintStart_toStartOf="@id/movie_backdrop"
         app:layout_constraintTop_toTopOf="@id/movie_backdrop" />
 
-    <FrameLayout
-        android:id="@+id/movie_toolbar_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/movie_navigation_up"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorNavigationUp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/movie_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    </FrameLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_navigation_up_24dp"
+            android:tint="@android:color/white"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/movie_poster_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="16dp"
         app:layout_constraintDimensionRatio="10:15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_toolbar_container">
+        app:layout_constraintTop_toBottomOf="@id/movie_navigation_up">
 
         <ImageView
             android:id="@+id/movie_poster"
@@ -120,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@id/movie_title"
         tools:text="2019" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/movie_year_duration_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
