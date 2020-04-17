@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/action_home"
         android:name="com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies.PopularMoviesFragment"
-        android:label="home_fragment"
+        android:label="@string/popular_movies_title"
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_home_to_movie"
@@ -17,17 +17,17 @@
     <fragment
         android:id="@+id/action_search"
         android:name="com.github.alunicus.cinemalist.feature.search.presentation.SearchFragment"
-        android:label="search_fragment"
+        android:label="@string/bottom_navigation_search"
         tools:layout="@layout/search_fragment" />
     <fragment
         android:id="@+id/action_profile"
         android:name="com.github.alunicus.cinemalist.feature.profile.ProfileFragment"
-        android:label="profile_fragment"
+        android:label="@string/bottom_navigation_profile"
         tools:layout="@layout/profile_fragment" />
     <fragment
         android:id="@+id/action_menu"
         android:name="com.github.alunicus.cinemalist.feature.menu.MenuFragment"
-        android:label="menu_fragment"
+        android:label="@string/bottom_navigation_menu"
         tools:layout="@layout/menu_fragment" />
     <fragment
         android:id="@+id/movieFragment"
