@@ -11,7 +11,7 @@ class MovieRemoteDataSourceImpl(private val api: MovieApi) : MovieRemoteDataSour
         return api.getMovieCredits(movieId).toCast()
     }
 
-    override suspend fun getPopularMovies(): List<PopularMovie> {
-        return api.getPopularMovies().toPopularMovies()
+    override suspend fun getPopularMovies(pageNumber: Int): PopularMoviePage {
+        return api.getPopularMovies(pageNumber).toPopularMovies()
     }
 }
