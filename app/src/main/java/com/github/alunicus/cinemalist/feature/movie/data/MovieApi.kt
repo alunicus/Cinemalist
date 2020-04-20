@@ -5,6 +5,7 @@ import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.MovieDetail
 import com.github.alunicus.cinemalist.feature.movie.domain.model.dto.PopularMoviesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieApi {
     @GET("movie/{movie_id}")
@@ -14,5 +15,5 @@ interface MovieApi {
     suspend fun getMovieCredits(@Path("movie_id") movieId: Int): MovieCreditsDto
 
     @GET("movie/popular")
-    suspend fun getPopularMovies(): PopularMoviesDto
+    suspend fun getPopularMovies(@Query("page") pageNumber: Int): PopularMoviesDto
 }

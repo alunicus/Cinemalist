@@ -35,7 +35,11 @@ private fun CastDto.toCast() = Cast(
     order
 )
 
-fun PopularMoviesDto.toPopularMovies() = results.toPopularMovieList()
+fun PopularMoviesDto.toPopularMovies() = PopularMoviePage(
+    page,
+    totalPages,
+    results.toPopularMovieList()
+)
 
 private fun List<PopularMovieDto>.toPopularMovieList() =
     asSequence().map { it.toPopularMovie() }.toList()

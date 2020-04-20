@@ -4,7 +4,6 @@ import com.github.alunicus.cinemalist.BuildConfig
 import com.github.alunicus.cinemalist.core.NetworkInterceptor
 import com.github.alunicus.cinemalist.feature.movie.data.*
 import com.github.alunicus.cinemalist.feature.movie.domain.GetMovieUseCase
-import com.github.alunicus.cinemalist.feature.movie.domain.GetPopularMoviesUseCase
 import com.github.alunicus.cinemalist.feature.movie.presentation.MovieViewModel
 import com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies.PopularMoviesViewModel
 import com.google.gson.FieldNamingPolicy
@@ -43,6 +42,4 @@ val movieModule = module {
     viewModel { PopularMoviesViewModel(get()) }
 
     factory { GetMovieUseCase(get()) }
-
-    factory { GetPopularMoviesUseCase(get()) }
 }

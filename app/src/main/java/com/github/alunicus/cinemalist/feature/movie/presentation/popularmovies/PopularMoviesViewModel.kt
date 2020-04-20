@@ -1,36 +1,27 @@
 package com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.alunicus.cinemalist.core.ErrorMessage
-import com.github.alunicus.cinemalist.core.Result
-import com.github.alunicus.cinemalist.extensions.handleFailure
-import com.github.alunicus.cinemalist.feature.movie.domain.GetPopularMoviesUseCase
+import androidx.paging.DataSource
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.github.alunicus.cinemalist.feature.movie.data.MovieRepository
+import com.github.alunicus.cinemalist.feature.movie.data.PopularMoviesDataSource
 import com.github.alunicus.cinemalist.feature.movie.domain.model.PopularMovie
-import kotlinx.coroutines.launch
 
-class PopularMoviesViewModel(private val popularMoviesUseCase: GetPopularMoviesUseCase) :
-    ViewModel() {
-    private val popularMoviesLoaded by lazy { MutableLiveData<List<PopularMovie>>() }
-    private val error by lazy { MutableLiveData<ErrorMessage>() }
-    private val progressVisible by lazy { MutableLiveData<Boolean>() }
+class PopularMoviesViewModel(private val movieRepository: MovieRepository) : ViewModel() {
+    private val pagedPopularMovies: LiveData<PagedList<PopularMovie>>
 
-    fun onPopularMoviesLoaded(): LiveData<List<PopularMovie>> = popularMoviesLoaded
-    fun onError(): LiveData<ErrorMessage> = error
-    fun onProgressVisibilityChanged(): LiveData<Boolean> = progressVisible
-
-    fun loadPopularMovies() {
-        viewModelScope.launch {
-            progressVisible.value = true
-
-            when (val result = popularMoviesUseCase.getPopularMovies()) {
-                is Result.Success -> popularMoviesLoaded.value = result.result
-                is Result.Failure -> error.value = result.handleFailure()
+    init {
+        val dataSourceFactory = object : DataSource.Factory<Int, PopularMovie>() {
+            override fun create(): DataSource<Int, PopularMovie> {
+                return PopularMoviesDataSource(viewModelScope, movieRepository)
             }
-
-            progressVisible.value = false
         }
+
+        pagedPopularMovies = LivePagedListBuilder(dataSourceFactory, 10).build()
     }
+
+    fun onPopularMoviesLoaded(): LiveData<PagedList<PopularMovie>> = pagedPopularMovies
 }

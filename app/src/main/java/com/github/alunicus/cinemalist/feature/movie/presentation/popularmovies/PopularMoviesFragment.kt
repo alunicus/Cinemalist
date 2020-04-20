@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.github.alunicus.cinemalist.databinding.PopularMoviesFragmentBinding
-import com.github.alunicus.cinemalist.extensions.visibleOrGone
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PopularMoviesFragment : Fragment() {
@@ -37,18 +36,8 @@ class PopularMoviesFragment : Fragment() {
         binding.popularMoviesList.adapter = adapter
 
         viewModel.onPopularMoviesLoaded().observe(viewLifecycleOwner) {
-            adapter.setItems(it)
+            adapter.submitList(it)
+            binding.popularMoviesProgress.visibility = View.GONE
         }
-
-        viewModel.onError().observe(viewLifecycleOwner) {
-            binding.popularMoviesError.setErrorMessage(it)
-            binding.popularMoviesError.visibility = View.VISIBLE
-        }
-
-        viewModel.onProgressVisibilityChanged().observe(viewLifecycleOwner) {
-            binding.popularMoviesProgress.visibleOrGone(it)
-        }
-
-        viewModel.loadPopularMovies()
     }
 }

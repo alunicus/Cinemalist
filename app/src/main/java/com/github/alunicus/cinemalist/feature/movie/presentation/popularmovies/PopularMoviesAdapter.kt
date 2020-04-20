@@ -2,14 +2,15 @@ package com.github.alunicus.cinemalist.feature.movie.presentation.popularmovies
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.alunicus.cinemalist.R
 import com.github.alunicus.cinemalist.databinding.ItemPopularMovieBinding
 import com.github.alunicus.cinemalist.extensions.loadImage
 import com.github.alunicus.cinemalist.feature.movie.domain.model.PopularMovie
 
-class PopularMoviesAdapter(val onClick: (movieId: Int) -> Unit) :
-    RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder>() {
+class PopularMoviesAdapter(private val onClick: (movieId: Int) -> Unit) :
+    PagedListAdapter<PopularMovie, PopularMoviesAdapter.ViewHolder>(PopularMovieDiffUtil()) {
 
     private var _binding: ItemPopularMovieBinding? = null
     private val binding get() = _binding!!
@@ -20,24 +21,11 @@ class PopularMoviesAdapter(val onClick: (movieId: Int) -> Unit) :
         _binding = ItemPopularMovieBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ViewHolder(
-            binding
-        )
-    }
-
-    override fun getItemCount(): Int {
-        return items.size
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.apply {
-            val movie = items[adapterPosition]
-
-            name.text = movie.title
-            poster.loadImage(movie.posterPath, R.drawable.movie_placeholder)
-
-            holder.itemView.setOnClickListener { onClick(movie.id) }
-        }
+        getItem(position)?.let { holder.bind(it, onClick) }
     }
 
     fun setItems(list: List<PopularMovie>) {
@@ -48,7 +36,16 @@ class PopularMoviesAdapter(val onClick: (movieId: Int) -> Unit) :
     }
 
     class ViewHolder(binding: ItemPopularMovieBinding) : RecyclerView.ViewHolder(binding.root) {
-        val poster = binding.popularMoviePoster
-        val name = binding.popularMovieName
+        private val poster = binding.popularMoviePoster
+        private val name = binding.popularMovieName
+
+        fun bind(movie: PopularMovie, onClick: (movieId: Int) -> Unit) {
+            movie.apply {
+                name.text = title
+                poster.loadImage(posterPath, R.drawable.movie_placeholder)
+
+                itemView.setOnClickListener { onClick(id) }
+            }
+        }
     }
 }

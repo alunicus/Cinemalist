@@ -5,7 +5,7 @@ import com.github.alunicus.cinemalist.core.Error
 import com.github.alunicus.cinemalist.core.Result
 import com.github.alunicus.cinemalist.feature.movie.domain.model.Cast
 import com.github.alunicus.cinemalist.feature.movie.domain.model.MovieDetails
-import com.github.alunicus.cinemalist.feature.movie.domain.model.PopularMovie
+import com.github.alunicus.cinemalist.feature.movie.domain.model.PopularMoviePage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -22,8 +22,8 @@ class MovieRepositoryImpl(
         return request { remoteDataSource.getMovieCredits(id) }
     }
 
-    override suspend fun getPopularMovies(): Result<List<PopularMovie>, Error> {
-        return request { remoteDataSource.getPopularMovies() }
+    override suspend fun getPopularMovies(pageNumber: Int): Result<PopularMoviePage, Error> {
+        return request { remoteDataSource.getPopularMovies(pageNumber) }
     }
 
     private suspend fun <T> request(call: suspend () -> T): Result<T, Error> {
